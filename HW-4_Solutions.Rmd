@@ -1,0 +1,193 @@
+---
+title: "Homework Assignment 4"
+author: "Shrusti Ghela"
+date: "February 17, 2022"
+output: 
+  pdf_document:
+    keep_tex: true
+---
+
+**Data: ‘Sales.csv’**
+
+The data consist of sales prices for a sample of homes from a US city and some features of the houses.
+
+Variables:
+
+LAST_SALE_PRICE: the sale price of the home
+SQFT: area of the house (sq. ft.)
+LOT_SIZE: area of the lot (sq. ft.)
+BEDS: number of bedrooms
+BATHS: number of bathrooms
+
+
+```{r, echo=FALSE}
+sales <- read.csv("Sales.csv")
+```
+
+**1. Calculate all pairwise correlations between all five variables. **
+```{r, echo=FALSE}
+sales_clean <- na.omit(sales)
+```
+
+```{r, echo=FALSE}
+res <- cor(sales_clean)
+round(res,4)
+```
+
+**2. Make a  scatterplot of the sale price versus the area of the house. Describe the association between these two variables.**
+
+```{r}
+plot(sales_clean$LAST_SALE_PRICE, sales_clean$SQFT, main="Area vs. sale price",
+   xlab="Sale price", ylab="Area of the house ", pch=18)
+```
+
+According to the scatter plot, there seems to be a linear relationship between area and the sale price. 
+
+**3. Fit a simple linear regression model (Model 1) with sale price as response variable and area of the house (SQFT) as predictor variable. State the estimated value of the intercept and the estimated coefficient for the area variable.**
+
+```{r}
+model1<- lm(LAST_SALE_PRICE ~ SQFT, data=sales_clean)
+model1
+```
+
+**4. Write the equation that describes the relationship between the mean sale price and SQFT. **
+
+LAST_SALE_PRICE = - 47566.5 + 350.9*SQFT
+
+**5. State the interpretation in words of the estimated intercept.**
+
+The interpretation of $\alpha$ is the mean of $Y$ given $X=0$, i.e.,
+$\mbox{E}(Y | X=0) = \alpha + \beta \times 0 = \alpha$. This is the point where the regression line crosses the $y$-axis.
+The mean of LAST_SALE_PRICE given SQFT=0 is - 47566.5
+
+**6. State the interpretation in words of the estimated coefficient for the area variable.**
+
+The interpretation of $\beta$ is the average _difference_ in the mean of $Y$ per unit _difference_ in $X$.
+The average difference in the mean of LAST_SALE_PRICE per unit difference in SQFT is 350.9
+
+**7. Add the LOT_SIZE variable to the linear regression model (Model 2). How did the estimated coefficient for the SQFT variable change?**
+
+```{r}
+model2<- lm(LAST_SALE_PRICE ~ SQFT + LOT_SIZE, data=sales_clean)
+model2
+```
+Estimated coefficient of SQFT for model 1 = 350.9 
+Estimated coefficient of SQFT for model 1 = 355.737
+There is a little change between the estimated coefficient for the SQFT variable.
+
+**8. State the interpretation of the coefficient of SQFT in Model 2.**
+
+The average difference in the mean of LAST_SALE_PRICE per unit difference in SQFT is 355.737
+
+**9. Report the R-squared values from the two models. Explain why they are different.**
+
+```{r}
+summary(model1)
+summary(model2)
+```
+The R-squared values from the two models are different because model 2 has an additional variable(LOT_SIZE) which changes how much variation in the response is explained by the model. 
+
+**10. Report the estimates of the error variances from the two models. Explain why they are different.**
+
+```{r}
+(summary(model1)$sigma)**2
+
+```
+```{r}
+(summary(model2)$sigma)**2
+
+```
+The error variance is the variance of the errors. We estimate it using the sum of squares of residuals. Since we add one more variable in the model 2, there is a change in the error variance. Because we add one extra variable that explains something extra about the predictor, we see that the error variance is reduced. That means the the part that we can't explain is reduced. 
+
+**11. State the interpretation of the estimated error variance for Model 2.**
+
+If we have a model, we can explain part of the variance of the response from the variance of predictors. The part we can't explain is error variance. The variance of the errors for the model 2 is 95548117507. 
+
+**12. Test the null hypothesis that the coefficient of the SQFT variable in Model 2 is equal to 0. (Assume that the assumptions required for the test are met.)**
+
+Full-Model: E($LAST\_SALE\_PRICE)=\beta_0 + \beta_1 SQFT + \beta_2 LOT\_SIZE$
+
+Null hypothesis: $H_0:\beta_1=0$.
+
+Reduced-Model:  E($LAST\_SALE\_PRICE)=\beta_0 + \beta_2 LOT\_SIZE$
+
+ANOVA table for the full model
+```{r}
+anova(lm(LAST_SALE_PRICE ~ SQFT + LOT_SIZE, data=sales_clean), options(scipen=999))
+
+```
+
+ANOVA table for the reduced model
+```{r}
+anova(lm(LAST_SALE_PRICE ~ LOT_SIZE, data=sales_clean), options(scipen=999))
+
+```
+
+F-test for comparing full and reduced model
+```{r}
+f = ((848034857701759-388116453312974)/(4063-4062))/(388116453312974/4062)
+f
+```
+
+The p-value obtained by the tail probability for the value 4813.474 in the F-distribution with 1 numerator df and 4062 denominator df
+```{r}
+pf(4813.474, 1, 4062, lower.tail=FALSE)
+```
+We would reject the null hypothesis that the coefficient of the SQFT variable in Model 2 is equal to 0.
+
+**13. Test the null hypothesis that the coefficients of both the SQFT and LOT_SIZE variables are equal to 0. Report the test statistic.**
+
+Full-Model: E($LAST\_SALE\_PRICE)=\beta_0 + \beta_1 SQFT + \beta_2 LOT\_SIZE$
+
+Null hypothesis: $H_0:\beta_1 = \beta_2 =0$.
+
+Reduced-Model:  E($LAST\_SALE\_PRICE)=\beta_0$
+
+ANOVA table for full-model
+```{r}
+anova(lm(LAST_SALE_PRICE ~ SQFT + LOT_SIZE, data=sales_clean), options(scipen=999))
+
+```
+
+ANOVA table for reduced model
+```{r}
+anova(lm(LAST_SALE_PRICE ~ 1, data=sales_clean), options(scipen=999))
+
+```
+
+F-test for comparing full and reduced model
+```{r}
+f = ((863768392527944 -388116453312974)/(4064 -4062))/(388116453312974/4062)
+f
+```
+
+The p-value obtained by the tail probability for the value 2489.07 in the F-distribution with 2 numerator df and 4062 denominator df
+```{r}
+pf(2489.07, 2, 4062, lower.tail=FALSE)
+```
+
+We would reject the null hypothesis that the coefficient of  both the SQFT and LOT_SIZE variables are equal to 0.
+
+**14. What is the distribution of the test statistic under the null hypothesis (assuming model assumptions are met)?**
+
+To test a null hypothesis we compare the sums of squares of residuals
+for the _full_ model, which includes the coefficients being tested,
+with the _reduced_ model, which has those coefficients set to 0.
+
+If we define SSE$_0$ and SSE$_1$ as the sums of squares of
+residuals for the reduced and full models, respectively,
+the F-statistic is defined as:
+
+$$
+F=\frac{(SSE_0 - SSE_1)/(p_1-p_0)}{SSE_1/(n-p_1)}
+$$
+
+The F-statistic is referred to the $F_{p_1-p_0,n-p_1}$ distribution for calculation of the p-value. 
+
+So, the F-statistic is $F_{2,4062}$
+
+**15. Report the p-value for the test in Q13.**
+```{r}
+pf(2489.07, 2, 4062, lower.tail=FALSE)
+```
+

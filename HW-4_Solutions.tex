@@ -1,0 +1,538 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{Homework Assignment 4}
+\author{Shrusti Ghela}
+\date{February 17, 2022}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework Assignment 4},
+  pdfauthor={Shrusti Ghela},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\textbf{Data: `Sales.csv'}
+
+The data consist of sales prices for a sample of homes from a US city
+and some features of the houses.
+
+Variables:
+
+LAST\_SALE\_PRICE: the sale price of the home SQFT: area of the house
+(sq. ft.) LOT\_SIZE: area of the lot (sq. ft.) BEDS: number of bedrooms
+BATHS: number of bathrooms
+
+\textbf{1. Calculate all pairwise correlations between all five
+variables. }
+
+\begin{verbatim}
+##                 LAST_SALE_PRICE   SQFT LOT_SIZE   BEDS  BATHS
+## LAST_SALE_PRICE          1.0000 0.7409   0.1350 0.3785 0.5980
+## SQFT                     0.7409 1.0000   0.2370 0.6360 0.7456
+## LOT_SIZE                 0.1350 0.2370   1.0000 0.1770 0.1354
+## BEDS                     0.3785 0.6360   0.1770 1.0000 0.6163
+## BATHS                    0.5980 0.7456   0.1354 0.6163 1.0000
+\end{verbatim}
+
+\textbf{2. Make a scatterplot of the sale price versus the area of the
+house. Describe the association between these two variables.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(sales\_clean}\SpecialCharTok{$}\NormalTok{LAST\_SALE\_PRICE, sales\_clean}\SpecialCharTok{$}\NormalTok{SQFT, }\AttributeTok{main=}\StringTok{"Area vs. sale price"}\NormalTok{,}
+   \AttributeTok{xlab=}\StringTok{"Sale price"}\NormalTok{, }\AttributeTok{ylab=}\StringTok{"Area of the house "}\NormalTok{, }\AttributeTok{pch=}\DecValTok{18}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HW-4_Solutions_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+According to the scatter plot, there seems to be a linear relationship
+between area and the sale price.
+
+\textbf{3. Fit a simple linear regression model (Model 1) with sale
+price as response variable and area of the house (SQFT) as predictor
+variable. State the estimated value of the intercept and the estimated
+coefficient for the area variable.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model1}\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(LAST\_SALE\_PRICE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ SQFT, }\AttributeTok{data=}\NormalTok{sales\_clean)}
+\NormalTok{model1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = LAST_SALE_PRICE ~ SQFT, data = sales_clean)
+## 
+## Coefficients:
+## (Intercept)         SQFT  
+##    -47566.5        350.9
+\end{verbatim}
+
+\textbf{4. Write the equation that describes the relationship between
+the mean sale price and SQFT. }
+
+LAST\_SALE\_PRICE = - 47566.5 + 350.9*SQFT
+
+\textbf{5. State the interpretation in words of the estimated
+intercept.}
+
+The interpretation of \(\alpha\) is the mean of \(Y\) given \(X=0\),
+i.e., \(\mbox{E}(Y | X=0) = \alpha + \beta \times 0 = \alpha\). This is
+the point where the regression line crosses the \(y\)-axis. The mean of
+LAST\_SALE\_PRICE given SQFT=0 is - 47566.5
+
+\textbf{6. State the interpretation in words of the estimated
+coefficient for the area variable.}
+
+The interpretation of \(\beta\) is the average \emph{difference} in the
+mean of \(Y\) per unit \emph{difference} in \(X\). The average
+difference in the mean of LAST\_SALE\_PRICE per unit difference in SQFT
+is 350.9
+
+\textbf{7. Add the LOT\_SIZE variable to the linear regression model
+(Model 2). How did the estimated coefficient for the SQFT variable
+change?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model2}\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(LAST\_SALE\_PRICE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ SQFT }\SpecialCharTok{+}\NormalTok{ LOT\_SIZE, }\AttributeTok{data=}\NormalTok{sales\_clean)}
+\NormalTok{model2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = LAST_SALE_PRICE ~ SQFT + LOT_SIZE, data = sales_clean)
+## 
+## Coefficients:
+## (Intercept)         SQFT     LOT_SIZE  
+##  -32579.055      355.737       -3.965
+\end{verbatim}
+
+Estimated coefficient of SQFT for model 1 = 350.9 Estimated coefficient
+of SQFT for model 1 = 355.737 There is a little change between the
+estimated coefficient for the SQFT variable.
+
+\textbf{8. State the interpretation of the coefficient of SQFT in Model
+2.}
+
+The average difference in the mean of LAST\_SALE\_PRICE per unit
+difference in SQFT is 355.737
+
+\textbf{9. Report the R-squared values from the two models. Explain why
+they are different.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(model1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = LAST_SALE_PRICE ~ SQFT, data = sales_clean)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2166915  -147629    -9306   124458  3046130 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -47566.52   12241.47  -3.886 0.000104 ***
+## SQFT           350.91       4.99  70.316  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 309700 on 4063 degrees of freedom
+## Multiple R-squared:  0.5489, Adjusted R-squared:  0.5488 
+## F-statistic:  4944 on 1 and 4063 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(model2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = LAST_SALE_PRICE ~ SQFT + LOT_SIZE, data = sales_clean)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2162244  -146163   -11297   119938  3333236 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -3.258e+04  1.279e+04  -2.548   0.0109 *  
+## SQFT         3.557e+02  5.127e+00  69.379  < 2e-16 ***
+## LOT_SIZE    -3.965e+00  9.978e-01  -3.974  7.2e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 309100 on 4062 degrees of freedom
+## Multiple R-squared:  0.5507, Adjusted R-squared:  0.5504 
+## F-statistic:  2489 on 2 and 4062 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+The R-squared values from the two models are different because model 2
+has an additional variable(LOT\_SIZE) which changes how much variation
+in the response is explained by the model.
+
+\textbf{10. Report the estimates of the error variances from the two
+models. Explain why they are different.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\FunctionTok{summary}\NormalTok{(model1)}\SpecialCharTok{$}\NormalTok{sigma)}\SpecialCharTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 95895947932
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\FunctionTok{summary}\NormalTok{(model2)}\SpecialCharTok{$}\NormalTok{sigma)}\SpecialCharTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 95548117507
+\end{verbatim}
+
+The error variance is the variance of the errors. We estimate it using
+the sum of squares of residuals. Since we add one more variable in the
+model 2, there is a change in the error variance. Because we add one
+extra variable that explains something extra about the predictor, we see
+that the error variance is reduced. That means the the part that we
+can't explain is reduced.
+
+\textbf{11. State the interpretation of the estimated error variance for
+Model 2.}
+
+If we have a model, we can explain part of the variance of the response
+from the variance of predictors. The part we can't explain is error
+variance. The variance of the errors for the model 2 is 95548117507.
+
+\textbf{12. Test the null hypothesis that the coefficient of the SQFT
+variable in Model 2 is equal to 0. (Assume that the assumptions required
+for the test are met.)}
+
+Full-Model:
+E(\(LAST\_SALE\_PRICE)=\beta_0 + \beta_1 SQFT + \beta_2 LOT\_SIZE\)
+
+Null hypothesis: \(H_0:\beta_1=0\).
+
+Reduced-Model: E(\(LAST\_SALE\_PRICE)=\beta_0 + \beta_2 LOT\_SIZE\)
+
+ANOVA table for the full model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(}\FunctionTok{lm}\NormalTok{(LAST\_SALE\_PRICE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ SQFT }\SpecialCharTok{+}\NormalTok{ LOT\_SIZE, }\AttributeTok{data=}\NormalTok{sales\_clean), }\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen=}\DecValTok{999}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in anova.lmlist(object, ...): models with response '"NULL"' removed
+## because response differs from model 1
+\end{verbatim}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: LAST_SALE_PRICE
+##             Df          Sum Sq         Mean Sq  F value                Pr(>F)
+## SQFT         1 474143156081999 474143156081999 4962.350 < 0.00000000000000022
+## LOT_SIZE     1   1508783132972   1508783132972   15.791            0.00007197
+## Residuals 4062 388116453312974     95548117507                               
+##              
+## SQFT      ***
+## LOT_SIZE  ***
+## Residuals    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+ANOVA table for the reduced model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(}\FunctionTok{lm}\NormalTok{(LAST\_SALE\_PRICE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LOT\_SIZE, }\AttributeTok{data=}\NormalTok{sales\_clean), }\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen=}\DecValTok{999}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in anova.lmlist(object, ...): models with response '"NULL"' removed
+## because response differs from model 1
+\end{verbatim}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: LAST_SALE_PRICE
+##             Df          Sum Sq        Mean Sq F value                Pr(>F)    
+## LOT_SIZE     1  15733534826184 15733534826184  75.381 < 0.00000000000000022 ***
+## Residuals 4063 848034857701759   208721353114                                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+F-test for comparing full and reduced model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{=}\NormalTok{ ((}\DecValTok{848034857701759{-}388116453312974}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{4063{-}4062}\NormalTok{))}\SpecialCharTok{/}\NormalTok{(}\DecValTok{388116453312974}\SpecialCharTok{/}\DecValTok{4062}\NormalTok{)}
+\NormalTok{f}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4813.474
+\end{verbatim}
+
+The p-value obtained by the tail probability for the value 4813.474 in
+the F-distribution with 1 numerator df and 4062 denominator df
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pf}\NormalTok{(}\FloatTok{4813.474}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4062}\NormalTok{, }\AttributeTok{lower.tail=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+We would reject the null hypothesis that the coefficient of the SQFT
+variable in Model 2 is equal to 0.
+
+\textbf{13. Test the null hypothesis that the coefficients of both the
+SQFT and LOT\_SIZE variables are equal to 0. Report the test statistic.}
+
+Full-Model:
+E(\(LAST\_SALE\_PRICE)=\beta_0 + \beta_1 SQFT + \beta_2 LOT\_SIZE\)
+
+Null hypothesis: \(H_0:\beta_1 = \beta_2 =0\).
+
+Reduced-Model: E(\(LAST\_SALE\_PRICE)=\beta_0\)
+
+ANOVA table for full-model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(}\FunctionTok{lm}\NormalTok{(LAST\_SALE\_PRICE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ SQFT }\SpecialCharTok{+}\NormalTok{ LOT\_SIZE, }\AttributeTok{data=}\NormalTok{sales\_clean), }\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen=}\DecValTok{999}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in anova.lmlist(object, ...): models with response '"NULL"' removed
+## because response differs from model 1
+\end{verbatim}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: LAST_SALE_PRICE
+##             Df          Sum Sq         Mean Sq  F value                Pr(>F)
+## SQFT         1 474143156081999 474143156081999 4962.350 < 0.00000000000000022
+## LOT_SIZE     1   1508783132972   1508783132972   15.791            0.00007197
+## Residuals 4062 388116453312974     95548117507                               
+##              
+## SQFT      ***
+## LOT_SIZE  ***
+## Residuals    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+ANOVA table for reduced model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(}\FunctionTok{lm}\NormalTok{(LAST\_SALE\_PRICE }\SpecialCharTok{\textasciitilde{}} \DecValTok{1}\NormalTok{, }\AttributeTok{data=}\NormalTok{sales\_clean), }\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen=}\DecValTok{999}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in anova.lmlist(object, ...): models with response '"NULL"' removed
+## because response differs from model 1
+\end{verbatim}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: LAST_SALE_PRICE
+##             Df          Sum Sq      Mean Sq F value Pr(>F)
+## Residuals 4064 863768392527944 212541435169
+\end{verbatim}
+
+F-test for comparing full and reduced model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{=}\NormalTok{ ((}\DecValTok{863768392527944} \SpecialCharTok{{-}}\DecValTok{388116453312974}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{4064} \SpecialCharTok{{-}}\DecValTok{4062}\NormalTok{))}\SpecialCharTok{/}\NormalTok{(}\DecValTok{388116453312974}\SpecialCharTok{/}\DecValTok{4062}\NormalTok{)}
+\NormalTok{f}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2489.07
+\end{verbatim}
+
+The p-value obtained by the tail probability for the value 2489.07 in
+the F-distribution with 2 numerator df and 4062 denominator df
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pf}\NormalTok{(}\FloatTok{2489.07}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4062}\NormalTok{, }\AttributeTok{lower.tail=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+We would reject the null hypothesis that the coefficient of both the
+SQFT and LOT\_SIZE variables are equal to 0.
+
+\textbf{14. What is the distribution of the test statistic under the
+null hypothesis (assuming model assumptions are met)?}
+
+To test a null hypothesis we compare the sums of squares of residuals
+for the \emph{full} model, which includes the coefficients being tested,
+with the \emph{reduced} model, which has those coefficients set to 0.
+
+If we define SSE\(_0\) and SSE\(_1\) as the sums of squares of residuals
+for the reduced and full models, respectively, the F-statistic is
+defined as:
+
+\[
+F=\frac{(SSE_0 - SSE_1)/(p_1-p_0)}{SSE_1/(n-p_1)}
+\]
+
+The F-statistic is referred to the \(F_{p_1-p_0,n-p_1}\) distribution
+for calculation of the p-value.
+
+So, the F-statistic is \(F_{2,4062}\)
+
+\textbf{15. Report the p-value for the test in Q13.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pf}\NormalTok{(}\FloatTok{2489.07}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4062}\NormalTok{, }\AttributeTok{lower.tail=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\end{document}
