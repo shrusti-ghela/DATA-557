@@ -1,0 +1,193 @@
+---
+title: "Homework Assignment 6"
+author: "Shrusti Ghela"
+date: "March 03, 2022"
+output: 
+  pdf_document:
+    keep_tex: true
+---
+
+Data: “Sales_sample.csv” 
+
+The data are a random sample of size 1000 from the “Sales” data (after removing observations with missing values).
+
+Variables:
+
+LAST_SALE_PRICE: the sale price of the home
+SQFT: area of the house (sq. ft.)
+LOT_SIZE: area of the lot (sq. ft.)
+BEDS: number of bedrooms
+BATHS: number of bathrooms
+
+```{r, echo=FALSE}
+sales_data <- read.csv("Sales_sample.csv")
+```
+
+
+**1. Fit the linear regression model with sale price as response variable and SQFT, LOT_SIZE, BEDS, and BATHS as predictor variables (Model 1 from HW 5). Calculate robust standard errors for the coefficient estimates. Display a table with estimated coefficients, the usual standard errors that assume constant variance, and robust standard errors. **
+
+```{r}
+model_1 <- lm(LAST_SALE_PRICE ~ SQFT + LOT_SIZE + BEDS + BATHS, data=sales_data)
+summary(model_1)
+```
+
+```{r, echo=FALSE}
+library("sandwich")
+library("lmtest")
+```
+
+The output from vcovHC is the estimated variance-covariance matrix of variances and covariances
+of the parameter estimates.
+
+```{r, comment=""}
+round(vcovHC(model_1),6)
+```
+
+The diagonal elements of the variance-covariance matrix are the variances of the coefficients, so their square-roots are the SEs.
+
+Let's compare them to the standard SEs from the lm function.
+```{r}
+v <- vcovHC(model_1)
+robust.se <- sqrt(diag(v))
+round(cbind(summary(model_1)$coef,robust.se),4)
+```
+We can see that the robust SEs are larger than the standard SEs. 
+
+**2. Which set of standard errors should be used? Explain by referring to HW 5.**
+
+For large sample sizes we usually use robust SEs. If we are confident about the homoscedasticity (constant variance) assumption, we can use the usual SEs. For small sample sizes they can be more accurate than the robust SEs (as long as the constant variance assumption holds) - the reason is that the robust SEs can be somewhat unstable with very small samples.
+
+From HW5(1.4), we know that the constant variance assumption is not met for model_1. Furthermore, our sample size is large enough, so we should use the robust SEs instead of usual SEs. 
+
+**3. Perform the Wald test for testing that the coefficient of the LOT_SIZE variable is equal to 0. Use the usual standard errors that assume constant variance. Report the test statistic and p-value.**
+
+```{r}
+reduced.model_1 <- lm(LAST_SALE_PRICE ~ SQFT + BEDS + BATHS, data=sales_data)
+anova(reduced.model_1, model_1)
+```
+
+```{r}
+waldtest(reduced.model_1, model_1)
+```
+
+**4. Perform the robust Wald test statistic for testing that the coefficient of the LOT_SIZE variable is equal to 0. Report the test statistic and p-value.**
+
+```{r}
+waldtest(reduced.model_1, model_1, test="Chisq",vcov=vcovHC)
+```
+
+**5. Use the jackknife to estimate the SE for the coefficient of the LOT_SIZE variable. Report the jackknife estimate of the SE.**
+
+```{r,echo=F}
+par(mar=c(5,4,4,1))
+n <- nrow(sales_data)
+b.jack <- rep(0,n)
+for(i in 1:n){
+  lmi <- lm(LAST_SALE_PRICE ~ SQFT+ LOT_SIZE + BEDS + BATHS, data=sales_data, subset=-i)
+  b.jack[i] <- lmi$coef[3]
+}
+
+```
+
+```{r,echo=T, comment=""}
+SE.jack <- (n-1)*sd(b.jack)/sqrt(n)
+SE.jack
+```
+
+**6. Use the jackknife estimate of the SE to test the null hypothesis that the coefficient of the LOT_SIZE variable is equal to 0. Report the test statistic and p-value.**
+
+```{r}
+test_statistic <- (model_1$coef[3] - 0)/SE.jack
+data.frame(test_statistic,p=1-pf(test_statistic, 1,995))
+```
+**7. Do the tests in Q3, Q4, and Q6 agree? Which of these tests are valid?**
+The p-value is greater than 0.05 for Q4 and Q6, SO, we would not reject the null hypothesis that the coefficient of the LOT_SIZE variable is equal to 0. However, for Q3, the p-value is less than 0.05, so we reject the null hypothesis. 
+There are also robust Wald Tests for composite hypotheses in linear regression that can be used in place of the F-test, when model assumptions about the variance do not hold. So, the robust Wald test is a valid test. Jackknife estimate of the SE to test the null hypothesis is also a valid test because it is resistant to the violation of assumption of constant variance. 
+
+**8. Remove the LOT_SIZE variable from Model 1 (call this Model 1A). Fit Model 1A and report the table of coefficients, the usual standard errors that assume constant variance, and robust standard errors.**
+
+```{r}
+model_1A <- lm(LAST_SALE_PRICE ~ SQFT + BEDS + BATHS, data=sales_data)
+#summary(model_1A)
+```
+
+```{r}
+v <- vcovHC(model_1A)
+robust.se <- sqrt(diag(v))
+round(cbind(summary(model_1A)$coef,robust.se),4)
+```
+
+**9. Add the square of the LOT_SIZE variable to Model 1 (call this Model 1B). Fit Model 1B and report the table of coefficients, the usual standard errors that assume constant variance, and robust standard errors.**
+
+```{r}
+model_1B <- lm(LAST_SALE_PRICE ~ SQFT + LOT_SIZE + BEDS + BATHS + I(LOT_SIZE^2), data=sales_data)
+#summary(model_1B)
+```
+
+```{r}
+v <- vcovHC(model_1B)
+robust.se <- sqrt(diag(v))
+round(cbind(summary(model_1B)$coef,robust.se),4)
+```
+
+**10. Perform the F test to compare Model 1A and Model 1B. Report the p-value.**
+
+```{r}
+anova(model_1A, model_1B)
+```
+
+**11. State the null hypothesis being tested in Q10 either in words or by using model formulas.**
+
+model_1B(Full-model): $(LAST\_SALE\_PRICE )=\beta_0 + \beta_1 SQFT + \beta_2 LOT\_SIZE + \beta_3 BEDS + \beta_4 BATHS + \beta_5 LOT\_SIZE^2$
+
+Null hypothesis: $H_0:\beta_2=\beta_5 = 0$.
+
+model_1A(Reduced-model): $(LAST\_SALE\_PRICE) = \beta_0 + \beta_1 SQFT + \beta_3 BEDS + \beta_4 BATHS$
+
+**12. Perform the robust Wald test to compare Model 1A and Model 1B. Report the p-value.**
+
+```{r}
+waldtest(model_1A, model_1B, test="Chisq",vcov=vcovHC)
+```
+
+**13. Compare the results of the tests in Q10 and Q12. Which test is valid?**
+For Q12, we would not reject the null hypothesis. While for Q10, We reject the null hypothesis.
+There are also robust Wald Tests for composite hypotheses in linear regression that can be used in place of the F-test, when model assumptions about the variance do not hold. So, the robust Wald test is a valid test.
+
+**The following questions use the LOG_PRICE variable as in HW 5. Fit models corresponding to Model 1A and Model 1B with LOG_PRICE as the response variable. Call these models Model 1A_Log and Model 1B_Log.**
+
+```{r}
+sales_data$LOG_PRICE <- log10(sales_data$LAST_SALE_PRICE)
+head(sales_data)
+```
+```{r}
+model_1A_LOG<- lm(LOG_PRICE ~ SQFT + BEDS + BATHS, data=sales_data)
+model_1B_LOG <- lm(LOG_PRICE ~ SQFT + LOT_SIZE +  BEDS + BATHS + I(LOT_SIZE^2), data=sales_data)
+
+```
+
+**14. Perform the F test to compare Model 1A_Log and Model 1B_Log. Report the p-value.**
+
+```{r}
+anova(model_1A_LOG, model_1B_LOG)
+```
+
+**15. State the null hypothesis being tested in Q14 either in words or by using model formulas.**
+model_1B_LOG(Full-model): $(LOG\_PRICE)=\beta_0 + \beta_1 SQFT + \beta_2 LOT\_SIZE + \beta_3 BEDS + \beta_4 BATHS + \beta_5 LOT\_SIZE^2$
+
+Null hypothesis: $H_0:\beta_2=\beta_5 = 0$.
+
+model_1A_LOG(Reduced-model):  $(LOG\_PRICE)=\beta_0 + \beta_1 SQFT + \beta_3 BEDS + \beta_4 BATHS$
+
+**16. Perform the robust Wald test to compare Model 1A_Log and Model 1B_Log. Report the p-value.**
+
+```{r}
+waldtest(model_1A_LOG, model_1B_LOG, test="Chisq",vcov=vcovHC)
+```
+
+**17. Compare the results of the tests in Q14 and Q16. Do they give the same conclusion?**
+
+For both Q14 and Q16, we reject the null hypothesis that there is no linear relation of LOT_SIZE and $LOT\_SIZE^2$ WITH LOG_PRICE as the p-value is significantly less than 0.05. 
+
+**18. Based on all of the analyses performed, answer the following question. Is there evidence for an association between the size of the lot and sales price? Explain.**
+Throughout this assignment, we went through multiple combinations to find out the association between lot size and the sales price. In the last segment, we reject the null hypothesis that there is no linear relationship between LOG_PRICE and LOT_SIZE and $LOT\_SIZE^2$. So, there is some evidence for an association between the size of the lot and sales price. However, that association is not strictly linear so to speak. 
