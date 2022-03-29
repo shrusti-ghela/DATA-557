@@ -1,0 +1,470 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{Homework Assignment 2}
+\author{Shrusti Ghela}
+\date{February 09, 2022}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework Assignment 2},
+  pdfauthor={Shrusti Ghela},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+Data: `lead.csv'
+
+The data are from a study of the association between exposure to lead
+and IQ. The study was conducted in an urban area around a lead smelter.
+A random sample of 124 children who lived in the area was selected. Each
+study participant had a blood sample drawn in both 1972 and 1973 to
+assess blood concentrations of lead. The children were grouped based on
+their blood concentrations as follows:
+
+Group 1: concentration \textless{} 40 mg/L in both 1972 and 1973 Group
+2: concentration \textgreater{} 40 mg/L in both 1972 and 1973 or
+\textgreater{} 40 mg/L in 1973 alone (3 participants) Group 3:
+concentration \textgreater{} 40 mg/L in 1972 but \textless{} 40 mg/L in
+1973
+
+Each participant completed an IQ test in 1973. (A subset of the IQ
+scores from this study were used in HW 1, Question 3.) The variables in
+the data set are listed below.
+
+ID: Participant identification number SEX: Participant sex (1=M or 2=F)
+GROUP: As described above (1, 2, or 3) IQ: IQ score
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lead }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"lead\_study.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{1. The first goal is to compare the mean IQ scores for males and
+females. Use a 2-sample t-test for this comparison. What is the
+p-value?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ, SEX,mean))}
+\NormalTok{s }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ, SEX,sd))}
+\NormalTok{n }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ, SEX,length))}
+\FunctionTok{data.frame}\NormalTok{(m,s,n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          m        s  n
+## 1 91.23684 14.93083 76
+## 2 90.87671 13.58507 73
+\end{verbatim}
+
+Now to compare the mean IQ squares for 1 and 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(lead, }\FunctionTok{t.test}\NormalTok{(IQ[SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], IQ[SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{T))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  IQ[SEX == 1] and IQ[SEX == 2]
+## t = 0.15381, df = 147, p-value = 0.878
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -4.267092  4.987351
+## sample estimates:
+## mean of x mean of y 
+##  91.23684  90.87671
+\end{verbatim}
+
+\textbf{2. State the conclusion from your test.}
+
+The p-value is greater than 0.05, we would not reject the null
+hypothesis for equal means for males and females.
+
+\textbf{3. Are the independence assumptions valid for the t-test in this
+situation? Give a brief explanation.} Yes, the independence assumptions
+would be valid in this situation as the data for males and females are
+independent of each other, where data for one group would not affect the
+other group.
+
+\textbf{4. The second goal is to compare the mean IQ scores in the 3
+groups. State in words the null hypothesis for this test.}
+
+The null hypothesis for this case could be defined as the mean IQ scoreS
+for the 3 groups are equal.
+
+\textbf{5. State in words the alternative hypothesis for this test.}
+
+We define the alternative hypothesis as: Not all mean IQ scores for 3
+groups are equal.
+
+\textbf{6. What method should be used to perform the test?}
+
+ANOVA ANOVA is simply an extension of the 2-sample equal-variance t-test
+to the comparison of 3 or more population means. Since we have 3 groups
+to test, ANOVA would be the best choice.
+
+\textbf{7. Perform the test. Report the p-value.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{aov}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ}\SpecialCharTok{\textasciitilde{}}\NormalTok{lead}\SpecialCharTok{$}\NormalTok{GROUP, }\AttributeTok{data=}\NormalTok{lead))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Df Sum Sq Mean Sq F value Pr(>F)  
+## lead$GROUP    1   1321  1320.6   6.766 0.0102 *
+## Residuals   147  28692   195.2                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{8. State your conclusion about the evidence for an association
+between lead exposure and IQ.}
+
+The p-value is less than 0.05, and so we reject the null hypothesis of
+equal means for 3 groups. This means that there is an association
+between lead and IQ scores.
+
+\textbf{9. Are there strong reasons to believe that the assumptions of
+this test are not met? Briefly justify your answer.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ, GROUP, mean))}
+\NormalTok{S }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ, GROUP, sd))}
+\NormalTok{N }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ, GROUP, length))}
+\FunctionTok{data.frame}\NormalTok{(M,S,N)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          M         S  N
+## 1 93.72414 15.570313 87
+## 2 87.65625  9.502493 32
+## 3 86.96667 12.962767 30
+\end{verbatim}
+
+From above, we can clearly say that the equal variance assumption is not
+met. So, not all the required assumptions for ANOVA are met.
+
+\textbf{10. Conduct all pairwise comparison of group means. Report the
+p-values.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.vs.B}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{A.vs.B}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0120506
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.vs.C }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{3}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{A.vs.C}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02300319
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B.vs.C }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{3}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{B.vs.C}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8131036
+\end{verbatim}
+
+\textbf{11. What conclusion about the association between lead and IQ
+would you draw from the pairwise comparisons of group means? Does it
+agree with the conclusion in Q8? (Consider the issue of multiple testing
+in your answer.)}
+
+Considering the issue of mutltiple testing, we use Bonferroni
+correction. And we change the significance level for each individual
+test to be 0.05/3 so that the overall significance level is maintained
+to 0.05. So, applying that the p-values calculated above are not all
+greater than 0.01667, and so we would reject the null hypothesis of
+equal means for 3 groups. This means that there is an association
+between lead and IQ scores.
+
+\textbf{12. Now we wish to compare the 3 group means for males and
+females separately. Display some appropriate descriptive statistics for
+this analysis.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1 }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], mean))}
+\NormalTok{s1 }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], sd))}
+\NormalTok{n1 }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], length))}
+\NormalTok{m2 }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], mean))}
+\NormalTok{s2 }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], sd))}
+\NormalTok{n2 }\OtherTok{=} \FunctionTok{with}\NormalTok{(lead, }\FunctionTok{tapply}\NormalTok{(IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], length))}
+
+\FunctionTok{data.frame}\NormalTok{(m1,s1,n1,m2,s2,n2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         m1       s1 n1       m2        s2 n2
+## 1 92.93478 15.42351 46 94.60976 15.877465 41
+## 2 90.17647 11.13124 17 84.80000  6.471917 15
+## 3 86.61538 17.32791 13 87.23529  8.898942 17
+\end{verbatim}
+
+\textbf{13. Perform tests to compare the mean IQ scores in the 3 groups
+for males and females separately. Report the p-values from the two
+tests.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{aov}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{]}\SpecialCharTok{\textasciitilde{}}\NormalTok{lead}\SpecialCharTok{$}\NormalTok{GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{], }\AttributeTok{data=}\NormalTok{lead))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                           Df Sum Sq Mean Sq F value Pr(>F)
+## lead$GROUP[lead$SEX == 1]  1    427   427.5   1.942  0.168
+## Residuals                 74  16292   220.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{aov}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{]}\SpecialCharTok{\textasciitilde{}}\NormalTok{lead}\SpecialCharTok{$}\NormalTok{GROUP[lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{], }\AttributeTok{data=}\NormalTok{lead))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                           Df Sum Sq Mean Sq F value Pr(>F)  
+## lead$GROUP[lead$SEX == 2]  1    922   922.1   5.295 0.0243 *
+## Residuals                 71  12366   174.2                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{14. What can you conclude about the association between lead and
+IQ from these tests? Does it agree with the result in Q8 and Q11?
+(Consider multiple testing.)} We see that the null hypothesis of equal
+means of three groups for male(1) is not rejected. However, the null
+hypothesis of equal means of three groups for female(2) is rejected.
+This means that there is an association between lead and IQ for females
+and there is no association between lead and IQ for males. When we
+performed ANOVA to test the null hypothesis of equal means of three
+groups, we reject the null hypothesis Which means that there is an
+association between lead and IQ (Q8) When we performed pairwise test to
+test the null hypothesis of equla means of three groups, we reject the
+null hypothesis which means that there is an association between lead
+and IQ (Q11)
+
+\textbf{15. Now perform all 3 pairwise comparisons of groups for males
+and females separately. Report the p-values from these tests?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Am.vs.Bm }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{2} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{Am.vs.Bm}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4391938
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Am.vs.Cm }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{3} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{Am.vs.Cm}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2502756
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Bm.vs.Cm }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{2} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{3} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{Bm.vs.Cm}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5258587
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Af.vs.Bf }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{2} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{Af.vs.Bf}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.001830775
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Af.vs.Cf }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{3} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{Af.vs.Cf}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02927457
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Bf.vs.Cf }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{2} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}
+\NormalTok{lead}\SpecialCharTok{$}\NormalTok{IQ[lead}\SpecialCharTok{$}\NormalTok{GROUP}\SpecialCharTok{==}\DecValTok{3} \SpecialCharTok{\&}\NormalTok{ lead}\SpecialCharTok{$}\NormalTok{SEX}\SpecialCharTok{==}\DecValTok{2}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{F)}
+\NormalTok{Bf.vs.Cf}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3796352
+\end{verbatim}
+
+\textbf{16. What do you conclude about the association between lead and
+IQ from the results in Q13? Does your conclusion change from previous
+conclusions made in Q8, Q11 and Q14?}
+
+From Q15, the p-values for pairwise test for three groups for males are
+greater than 0.05/3, so we do not have enough evidence to reject the
+null hypothesis of equal means for three groups for males at 0.05
+significance level. This means that there is no association between lead
+and IQ for males. However, the p-values for pairwise test for three
+groups for females are not all greater than 0.05/3, so we reject the
+null hypothesis of equal means for three groups for females at 0.05
+significance level. This means that there is an association between lead
+and IQ for females. From Q14, we arrived at a similar conclusion where,
+there is an association between lead and IQ for females and there is no
+association between lead and IQ for males. From Q11, we arrived at a
+result that there is an association between lead and IQ. From Q8, we
+arrived at a result that there is an association between lead and IQ.
+So, our conclsuion changes from previous questions for males, however it
+doesn't change for females.
+
+\end{document}
