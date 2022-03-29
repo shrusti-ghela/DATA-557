@@ -1,0 +1,844 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{557 Homework 1 Solutions}
+\author{Shrusti Ghela}
+\date{January 20, 2022}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={557 Homework 1 Solutions},
+  pdfauthor={Shrusti Ghela},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\hypertarget{question-1}{%
+\subsection{Question 1}\label{question-1}}
+
+\hypertarget{suppose-that-you-flip-a-coin-40-times-and-count-the-number-of-heads.}{%
+\subsubsection{Suppose that you flip a coin 40 times and count the
+number of
+heads.}\label{suppose-that-you-flip-a-coin-40-times-and-count-the-number-of-heads.}}
+
+\hypertarget{what-is-the-distribution-of-the-number-of-heads-assuming-the-coin-is-fair}{%
+\paragraph{1.1. What is the distribution of the number of heads assuming
+the coin is
+fair?}\label{what-is-the-distribution-of-the-number-of-heads-assuming-the-coin-is-fair}}
+
+The number of heads is distributed Binomial(\(n = 40\), \(p = 0.5\)).
+
+\hypertarget{the-sample-proportion-of-heads-has-an-approximately-normal-distribution.-what-are-the-mean-and-standard-deviation-of-this-distribution-assuming-the-coin-is-fair}{%
+\paragraph{1.2. The sample proportion of heads has an approximately
+normal distribution. What are the mean and standard deviation of this
+distribution assuming the coin is
+fair?}\label{the-sample-proportion-of-heads-has-an-approximately-normal-distribution.-what-are-the-mean-and-standard-deviation-of-this-distribution-assuming-the-coin-is-fair}}
+
+The mean of the sample proportion is \[ \mu = 0.5\]\\
+The standard deviation is
+\[\sigma = \sqrt{\frac{0.5(1 - 0.5)}{40}} = \frac{0.5}{2\sqrt{10}} = \frac{0.25}{\sqrt{10}}=\]
+
+\begin{verbatim}
+## [1] "sd = 0.079"
+\end{verbatim}
+
+\hypertarget{define-the-z-statistic-for-conducting-a-test-of-the-null-hypothesis-that-the-coin-is-fair-i.e.-has-probability-of-a-head-equal-to-0.5.}{%
+\paragraph{1.3. Define the Z-statistic for conducting a test of the null
+hypothesis that the coin is fair (i.e., has probability of a head equal
+to
+0.5).}\label{define-the-z-statistic-for-conducting-a-test-of-the-null-hypothesis-that-the-coin-is-fair-i.e.-has-probability-of-a-head-equal-to-0.5.}}
+
+\[Z = \frac{\hat{p} - 0.5}{\sqrt{\frac{0.5 \cdot0.5}{40}}} = \frac{\hat{p} - 0.5}{\frac{0.5}{\sqrt{40}}} = \frac{\hat{p}-0.5}{0.079}\]\\
+OR
+
+\[Z = \frac{X - 20}{\sqrt{40 \cdot0.5 \cdot0.5}}= \frac{X - 20}{\sqrt{10}} = \frac{X - 20}{3.162}\]
+
+\hypertarget{suppose-the-experiment-results-in-15-heads-and-25-tails.-conduct-a-test-of-the-null-hypothesis-with-type-i-error-probability-0.05-using-the-normal-approximation.-state-the-z-statistic-the-p-value-and-the-conclusion-of-the-test-do-you-reject-the-null-hypothesis-or-not.}{%
+\paragraph{1.4. Suppose the experiment results in 15 heads and 25 tails.
+Conduct a test of the null hypothesis with type I error probability 0.05
+using the normal approximation. State the Z statistic, the p-value, and
+the conclusion of the test (do you reject the null hypothesis or
+not).}\label{suppose-the-experiment-results-in-15-heads-and-25-tails.-conduct-a-test-of-the-null-hypothesis-with-type-i-error-probability-0.05-using-the-normal-approximation.-state-the-z-statistic-the-p-value-and-the-conclusion-of-the-test-do-you-reject-the-null-hypothesis-or-not.}}
+
+Method 1, using the proportion of heads: \[H_0: p=0.5\]
+\[H_A: p \neq 0.5\]
+
+Will conduct test with 95\% significance, therefore \(\alpha = 0.05\).
+
+\[Z = \frac{\hat{p} - 0.5}{\sqrt{\frac{0.5 \cdot0.5}{40}}} = \frac{0.375-0.5}{0.079}=-1.581\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_hat }\OtherTok{=} \DecValTok{15} \SpecialCharTok{/}\NormalTok{ n}
+\NormalTok{z }\OtherTok{=}\NormalTok{ (p\_hat }\SpecialCharTok{{-}} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FloatTok{0.5}\SpecialCharTok{*}\FloatTok{0.5}\SpecialCharTok{/}\NormalTok{n)}
+\NormalTok{p }\OtherTok{=} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{pnorm}\NormalTok{(z)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Z = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(z, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Z = -1.581"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}p = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(p, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "p = 0.114"
+\end{verbatim}
+
+Method 2, using the number of heads (yields the exact same Z-statistic
+and p-value):\\
+\[H_0: \mu = 20\] \[H_A: \mu \neq 20\]
+\[Z = \frac{X - 20}{\sqrt{10}} = \frac{15-20}{\sqrt{10}} = -1.581\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{=} \DecValTok{15} \SpecialCharTok{+} \DecValTok{25}
+\NormalTok{z }\OtherTok{=}\NormalTok{ (}\DecValTok{15} \SpecialCharTok{{-}}\NormalTok{ (n }\SpecialCharTok{*} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(n }\SpecialCharTok{*} \FloatTok{0.5} \SpecialCharTok{*} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{p }\OtherTok{=} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{pnorm}\NormalTok{(z)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Z = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(z, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Z = -1.581"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}p = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(p, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "p = 0.114"
+\end{verbatim}
+
+Since \(p=\) 0.114 \(> \alpha\) and \(Z=\) -1.581 is within the
+acceptance region of \([-1.96, 1.96]\), we fail to reject the null
+hypothesis that the coin is unbiased.
+
+It is \textbf{incorrect} to calculate the standard deviation for the Z
+statistic with \(\hat{p}\), such as:\\
+\[Z = \frac{\hat{p} - 0.5}{\sqrt{\frac{\hat{p} (1-\hat{p})}{40}}} = Z = \frac{0.375 - 0.5}{\sqrt{\frac{0.375 \cdot 0.625}{40}}} = \frac{-0.125}{\sqrt{0.0059}}=\frac{-0.125}{0.0765}=-1.633\]
+This is because for a proportion test, we know that the underlying
+distribution (Bernoulli/Binomial) has a mean \(p\) and a standard
+deviation that is directly determined by \(p\):
+\(\sigma = \sqrt{p(1-p)}\). Therefore, under the null hypothesis that
+\(p=0.5\), we know the standard deviation under the null hypothesis. For
+tests about means, we do not have that certainty since the standard
+deviation is a separate parameter.
+
+It is also \textbf{incorrect} to answer this question using
+\texttt{prop.test}. According to R's \texttt{prop.test} documentation,
+the default for this function is to apply continuity correction to the
+results, which will change your p-values. This is demonstrated below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Incorrect p{-}value using continuity correction}
+\FunctionTok{print}\NormalTok{(}
+  \FunctionTok{prop.test}\NormalTok{(}\AttributeTok{x =} \DecValTok{15}\NormalTok{, }\AttributeTok{n =} \DecValTok{40}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  15 out of 40, null probability 0.5
+## X-squared = 2.025, df = 1, p-value = 0.1547
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.2317406 0.5419036
+## sample estimates:
+##     p 
+## 0.375
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Correct p{-}value using continuity correction}
+\FunctionTok{print}\NormalTok{(}
+  \FunctionTok{prop.test}\NormalTok{(}\AttributeTok{x =} \DecValTok{15}\NormalTok{, }\AttributeTok{n =} \DecValTok{40}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{correct =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  1-sample proportions test without continuity correction
+## 
+## data:  15 out of 40, null probability 0.5
+## X-squared = 2.5, df = 1, p-value = 0.1138
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.2422298 0.5296756
+## sample estimates:
+##     p 
+## 0.375
+\end{verbatim}
+
+\hypertarget{if-you-had-decided-to-use-a-type-i-error-probability-of-0.1-instead-of-0.05-would-your-conclusion-be-different-explain.}{%
+\paragraph{1.5. If you had decided to use a type I error probability of
+0.1 instead of 0.05 would your conclusion be different?
+Explain.}\label{if-you-had-decided-to-use-a-type-i-error-probability-of-0.1-instead-of-0.05-would-your-conclusion-be-different-explain.}}
+
+The conclusion would not be different because the p-value from the
+z-statistic earlier exceeds \(\alpha = 0.1\), and the Z-statistic still
+falls within the acceptance region of \([\) -1.645\(,\) 1.645 \(]\).
+Hence, we will still fail to reject the null hypothesis.
+
+\hypertarget{calculate-the-p-value-using-the-binomial-distribution.-do-you-reach-the-same-conclusion-with-the-binomial-distribution-as-with-the-normal-approximation}{%
+\paragraph{1.6. Calculate the p-value using the binomial distribution.
+Do you reach the same conclusion with the binomial distribution as with
+the normal
+approximation?}\label{calculate-the-p-value-using-the-binomial-distribution.-do-you-reach-the-same-conclusion-with-the-binomial-distribution-as-with-the-normal-approximation}}
+
+Using the binomial distribution, we do not achieve a p-value great
+enough to reject the null hypothesis under \(\alpha = 0.05\) nor
+\(\alpha = 0.1\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{delta }\OtherTok{=} \DecValTok{20} \SpecialCharTok{{-}} \DecValTok{15} \CommentTok{\# 5}
+\NormalTok{lower }\OtherTok{=} \DecValTok{20} \SpecialCharTok{{-}}\NormalTok{ delta }\CommentTok{\# 15}
+\NormalTok{upper }\OtherTok{=} \DecValTok{20} \SpecialCharTok{+}\NormalTok{ delta }\CommentTok{\# 25}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+  \StringTok{"p = "}\NormalTok{,}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dbinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\NormalTok{lower, upper}\SpecialCharTok{:}\DecValTok{40}\NormalTok{), }\DecValTok{40}\NormalTok{, }\FloatTok{0.5}\NormalTok{)), }\DecValTok{3}\NormalTok{)}
+\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "p = 0.154"
+\end{verbatim}
+
+\hypertarget{calculate-a-95-confidence-interval-for-the-probability-of-a-head-using-the-normal-approximation.-does-the-confidence-interval-include-the-value-0.5}{%
+\paragraph{1.7. Calculate a 95\% confidence interval for the probability
+of a head using the normal approximation. Does the confidence interval
+include the value
+0.5?}\label{calculate-a-95-confidence-interval-for-the-probability-of-a-head-using-the-normal-approximation.-does-the-confidence-interval-include-the-value-0.5}}
+
+Use \(Z^*=1.96\) to get the 95\% confidence interval:
+\(\hat{p} \pm Z^* SE\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\_star }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}
+\NormalTok{n }\OtherTok{=} \DecValTok{15} \SpecialCharTok{+} \DecValTok{25}
+\NormalTok{p\_hat }\OtherTok{=} \DecValTok{15} \SpecialCharTok{/}\NormalTok{ n}
+
+\NormalTok{se }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(p\_hat }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p\_hat) }\SpecialCharTok{/}\NormalTok{ n) }\CommentTok{\# 0.0765}
+
+\NormalTok{lower }\OtherTok{=}\NormalTok{ p\_hat }\SpecialCharTok{{-}}\NormalTok{ (z\_star }\SpecialCharTok{*}\NormalTok{ se)}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ p\_hat }\SpecialCharTok{+}\NormalTok{ (z\_star }\SpecialCharTok{*}\NormalTok{ se)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower, upper), }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.225 0.525
+\end{verbatim}
+
+This interval contains 0.5.
+
+Note that in this case we do not use \(p\) in calculating the standard
+error and instead use \(\hat{p}\).
+
+\hypertarget{calculate-a-90-confidence-interval-for-the-probability-of-a-head-using-the-normal-approximation.-how-does-it-compare-to-the-95-confidence-interval}{%
+\paragraph{1.8. Calculate a 90\% confidence interval for the probability
+of a head using the normal approximation. How does it compare to the
+95\% confidence
+interval?}\label{calculate-a-90-confidence-interval-for-the-probability-of-a-head-using-the-normal-approximation.-how-does-it-compare-to-the-95-confidence-interval}}
+
+Use \(Z^*=1.645\) to get the 90\% confidence interval:
+\(\hat{p} \pm Z^* SE\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\_star }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.95}\NormalTok{)}
+\NormalTok{lower }\OtherTok{=}\NormalTok{ p\_hat }\SpecialCharTok{{-}}\NormalTok{ (z\_star }\SpecialCharTok{*}\NormalTok{ se)}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ p\_hat }\SpecialCharTok{+}\NormalTok{ (z\_star }\SpecialCharTok{*}\NormalTok{ se)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower, upper), }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.249 0.501
+\end{verbatim}
+
+This interval also contains 0.5, though it is narrower than the 95\%
+confidence interval.
+
+\hypertarget{question-2}{%
+\subsection{Question 2}\label{question-2}}
+
+\hypertarget{a-study-is-done-to-determine-if-enhanced-seatbelt-enforcement-has-an-effect-on-the-proportion-of-drivers-wearing-seatbelts.-prior-to-the-intervention-enhanced-enforcement-the-proportion-of-drivers-wearing-their-seatbelt-was-0.7.-the-researcher-wishes-to-test-the-null-hypothesis-that-the-proportion-of-drivers-wearing-their-seatbelt-after-the-intervention-is-equal-to-0.7-i.e.-unchanged-from-before.-the-alternative-hypothesis-is-that-the-proportion-of-drivers-wearing-their-seatbelt-is-not-equal-to-0.7-either-0.7-or-0.7.-after-the-intervention-a-random-sample-of-400-drivers-was-selected-and-the-number-of-drivers-wearing-their-seatbelt-was-found-to-be-305.}{%
+\subsubsection{A study is done to determine if enhanced seatbelt
+enforcement has an effect on the proportion of drivers wearing
+seatbelts. Prior to the intervention (enhanced enforcement) the
+proportion of drivers wearing their seatbelt was 0.7. The researcher
+wishes to test the null hypothesis that the proportion of drivers
+wearing their seatbelt after the intervention is equal to 0.7 (i.e.,
+unchanged from before). The alternative hypothesis is that the
+proportion of drivers wearing their seatbelt is not equal to 0.7 (either
+\textless{} 0.7 or \textgreater{} 0.7). After the intervention, a random
+sample of 400 drivers was selected and the number of drivers wearing
+their seatbelt was found to be
+305.}\label{a-study-is-done-to-determine-if-enhanced-seatbelt-enforcement-has-an-effect-on-the-proportion-of-drivers-wearing-seatbelts.-prior-to-the-intervention-enhanced-enforcement-the-proportion-of-drivers-wearing-their-seatbelt-was-0.7.-the-researcher-wishes-to-test-the-null-hypothesis-that-the-proportion-of-drivers-wearing-their-seatbelt-after-the-intervention-is-equal-to-0.7-i.e.-unchanged-from-before.-the-alternative-hypothesis-is-that-the-proportion-of-drivers-wearing-their-seatbelt-is-not-equal-to-0.7-either-0.7-or-0.7.-after-the-intervention-a-random-sample-of-400-drivers-was-selected-and-the-number-of-drivers-wearing-their-seatbelt-was-found-to-be-305.}}
+
+\hypertarget{calculate-the-estimated-standard-error-of-the-proportion-of-drivers-wearing-seatbelts-after-the-intervention.}{%
+\paragraph{2.1. Calculate the estimated standard error of the proportion
+of drivers wearing seatbelts after the
+intervention.}\label{calculate-the-estimated-standard-error-of-the-proportion-of-drivers-wearing-seatbelts-after-the-intervention.}}
+
+\[SE = \sqrt{\frac{\hat{p} \cdot (1-\hat{p})}{n}} = \sqrt{\frac{0.7625 \cdot (0.2375)}{400}}= 0.021\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{=} \DecValTok{400}
+\NormalTok{p\_hat }\OtherTok{=} \DecValTok{305} \SpecialCharTok{/}\NormalTok{ n}
+
+\NormalTok{se }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(p\_hat }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p\_hat) }\SpecialCharTok{/}\NormalTok{ n)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}SE = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(se, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "SE = 0.021"
+\end{verbatim}
+
+\hypertarget{calculate-a-95-confidence-interval-for-the-proportion-of-drivers-wearing-seatbelts-after-the-intervention.-what-conclusion-would-you-draw-based-on-the-confidence-interval}{%
+\paragraph{2.2. Calculate a 95\% confidence interval for the proportion
+of drivers wearing seatbelts after the intervention. What conclusion
+would you draw based on the confidence
+interval?}\label{calculate-a-95-confidence-interval-for-the-proportion-of-drivers-wearing-seatbelts-after-the-intervention.-what-conclusion-would-you-draw-based-on-the-confidence-interval}}
+
+Use \(Z^*=1.96\) to get the 95\% confidence interval:
+\(\hat{p} \pm Z^* SE\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\_star }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}
+\NormalTok{lower }\OtherTok{=}\NormalTok{ p\_hat }\SpecialCharTok{{-}}\NormalTok{ (z\_star }\SpecialCharTok{*}\NormalTok{ se)}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ p\_hat }\SpecialCharTok{+}\NormalTok{ (z\_star }\SpecialCharTok{*}\NormalTok{ se)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower, upper), }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.721 0.804
+\end{verbatim}
+
+Tthe lower bound of the confidence interval 0.721 is above the null
+hypothesis of 0.7 so we can conclude that the intervention did have an
+effect on proportion of drivers wearing seatbelts pre-intervention with
+95\% confidence.
+
+\hypertarget{conduct-a-test-of-the-null-hypothesis-with-type-i-error-probability-0.05-using-the-normal-approximation.-should-the-null-hypothesis-be-rejected-how-does-your-conclusion-compare-to-the-conclusion-from-the-confidence-interval}{%
+\paragraph{2.3. Conduct a test of the null hypothesis with type I error
+probability 0.05 using the normal approximation. Should the null
+hypothesis be rejected? How does your conclusion compare to the
+conclusion from the confidence
+interval?}\label{conduct-a-test-of-the-null-hypothesis-with-type-i-error-probability-0.05-using-the-normal-approximation.-should-the-null-hypothesis-be-rejected-how-does-your-conclusion-compare-to-the-conclusion-from-the-confidence-interval}}
+
+\[ H_0: p = 0.7\] \[ H_A: p \neq 0.7\]
+\[Z = \frac{\hat{p} - 0.7}{\sqrt{\frac{0.7 \cdot 0.3}{400}}} = \frac{0.7625 - 0.7}{0.023} = \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\_stat }\OtherTok{=}\NormalTok{ (}\DecValTok{305} \SpecialCharTok{{-}}\NormalTok{ (n }\SpecialCharTok{*} \FloatTok{0.7}\NormalTok{)) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(n }\SpecialCharTok{*} \FloatTok{0.7} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FloatTok{0.7}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"z = "}\NormalTok{, }\FunctionTok{round}\NormalTok{(z\_stat, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "z = 2.728"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_val }\OtherTok{=} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(z\_stat)))}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"P{-}value = "}\NormalTok{, }\FunctionTok{round}\NormalTok{(p\_val, }\DecValTok{4}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "P-value = 0.0064"
+\end{verbatim}
+
+Given that the p-value is less than \(\alpha = 0.05\) and that \(Z=\)
+2.728 is outside of the rejection region \([-1.96, 1.96]\), we reject
+the null hypothesis that the intervention did not have an effect on the
+proportion of drivers wearing seatbelts with 95\% confidence.
+
+Here, as well as in question 1, we know the underlying data is
+distributed Bernoulli/Binomial, hence we use \(p\) instead of
+\(\hat{p}\) in calculating the denominator of the Z-statistic.
+
+\textbf{INCORRECT SOLUTION}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# R\textquotesingle{}s prop.test automaticall defaults to performing continuity correction.}
+\CommentTok{\# The p{-}values it produces are incorrect for this assignment, as are its confidence intervals.}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{prop.test}\NormalTok{(}\AttributeTok{x =} \DecValTok{305}\NormalTok{, }\AttributeTok{n =} \DecValTok{400}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  305 out of 400, null probability 0.7
+## X-squared = 7.1458, df = 1, p-value = 0.007514
+## alternative hypothesis: true p is not equal to 0.7
+## 95 percent confidence interval:
+##  0.7171113 0.8027460
+## sample estimates:
+##      p 
+## 0.7625
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Without correction}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{prop.test}\NormalTok{(}\AttributeTok{x =} \DecValTok{305}\NormalTok{, }\AttributeTok{n =} \DecValTok{400}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{correct =} \ConstantTok{FALSE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  1-sample proportions test without continuity correction
+## 
+## data:  305 out of 400, null probability 0.7
+## X-squared = 7.4405, df = 1, p-value = 0.006377
+## alternative hypothesis: true p is not equal to 0.7
+## 95 percent confidence interval:
+##  0.7184236 0.8015825
+## sample estimates:
+##      p 
+## 0.7625
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Neither produces the correct confidence interval, but without correction }
+\CommentTok{\# produces correct p{-}val}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{calculate-the-approximate-p-value-using-the-normal-approximation-and-the-exact-p-value-using-the-binomial-distribution.-are-the-two-p-values-very-different}{%
+\paragraph{2.4. Calculate the approximate p-value using the normal
+approximation and the exact p-value using the binomial distribution. Are
+the two p-values very
+different?}\label{calculate-the-approximate-p-value-using-the-normal-approximation-and-the-exact-p-value-using-the-binomial-distribution.-are-the-two-p-values-very-different}}
+
+We know the under the null hypothesis that
+\(\mu=n \cdot p=400 \cdot 0.7=280\).
+
+The result of the experiment yields \(\hat\mu=305\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+  \StringTok{\textquotesingle{}Normal approximation p{-}val = \textquotesingle{}}\NormalTok{,}
+  \FunctionTok{round}\NormalTok{(p\_val, }\DecValTok{4}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Normal approximation p-val = 0.0064"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{delta }\OtherTok{=} \FunctionTok{abs}\NormalTok{(n }\SpecialCharTok{*} \FloatTok{0.7} \SpecialCharTok{{-}} \DecValTok{305}\NormalTok{) }\CommentTok{\# 25}
+\NormalTok{lower }\OtherTok{=}\NormalTok{ n }\SpecialCharTok{*} \FloatTok{0.7} \SpecialCharTok{{-}}\NormalTok{ delta }\CommentTok{\# 255}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ n }\SpecialCharTok{*} \FloatTok{0.7} \SpecialCharTok{+}\NormalTok{ delta }\CommentTok{\# 305}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+  \StringTok{\textquotesingle{}Exact p{-}val using Binomial dist = \textquotesingle{}}\NormalTok{,}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dbinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\NormalTok{lower, upper}\SpecialCharTok{:}\DecValTok{400}\NormalTok{), }\DecValTok{400}\NormalTok{, }\FloatTok{0.7}\NormalTok{)), }\DecValTok{4}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Exact p-val using Binomial dist = 0.0074"
+\end{verbatim}
+
+The p-value from using the binomial distribution is very similar the one
+resulting from normal approximation.
+
+\textbf{NOTE} Using \texttt{binom.test} was acceptable for this answer,
+but it calculates the probability in a different way, but one that is
+also considered acceptable in the world of statistics. Instead of
+calculating the area under the pdf of the binomial distribution, which
+is \emph{asymmetrical} in the case of \(p=0.7\), it takes the cumulative
+probability from \([305, 400]\) and multiplies by two. This is
+demonstrated below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Returns p=0.00644}
+\FunctionTok{print}\NormalTok{(}
+  \FunctionTok{binom.test}\NormalTok{(}\AttributeTok{x =} \DecValTok{305}\NormalTok{, }\AttributeTok{n =} \DecValTok{400}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Exact binomial test
+## 
+## data:  305 and 400
+## number of successes = 305, number of trials = 400, p-value = 0.0063
+## alternative hypothesis: true probability of success is not equal to 0.7
+## 95 percent confidence interval:
+##  0.7176897 0.8033774
+## sample estimates:
+## probability of success 
+##                 0.7625
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This is equivalent to the below code}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}
+  \FunctionTok{sum}\NormalTok{(}\FunctionTok{dbinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{305}\SpecialCharTok{:}\DecValTok{400}\NormalTok{), }\DecValTok{400}\NormalTok{, }\FloatTok{0.7}\NormalTok{)) }\SpecialCharTok{*} \DecValTok{2}\NormalTok{, }\DecValTok{3}
+\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.006
+\end{verbatim}
+
+This is a reasonable approximation though not 100\% accurate because the
+binomial distribution is \emph{asymmetric} under \(p=0.7\).\\
+Interestingly, if you take a two-sided binomial test from
+\texttt{binom.test} using the lower range, 255, you get the correct
+answer. In this \texttt{binom.test} is taking the actual sum of the pdf
+under {[}0, 255{]} and {[}305, 400{]} and \emph{not} just the sum under
+{[}0, 255{]} and doubling it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Correct p{-}value}
+\FunctionTok{print}\NormalTok{(}
+  \FunctionTok{binom.test}\NormalTok{(}\AttributeTok{x =} \DecValTok{255}\NormalTok{, }\AttributeTok{n =} \DecValTok{400}\NormalTok{, }\AttributeTok{p =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}t\textquotesingle{}}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Exact binomial test
+## 
+## data:  255 and 400
+## number of successes = 255, number of trials = 400, p-value = 0.007444
+## alternative hypothesis: true probability of success is not equal to 0.7
+## 95 percent confidence interval:
+##  0.5882595 0.6846892
+## sample estimates:
+## probability of success 
+##                 0.6375
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This is NOT the same as the below code}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}
+  \FunctionTok{sum}\NormalTok{(}\FunctionTok{dbinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{255}\NormalTok{), }\DecValTok{400}\NormalTok{, }\FloatTok{0.7}\NormalTok{)) }\SpecialCharTok{*} \DecValTok{2}\NormalTok{, }\DecValTok{3}
+\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.008
+\end{verbatim}
+
+\hypertarget{calculate-the-power-of-the-test-to-detect-the-alternative-hypothesis-that-the-proportion-of-drivers-wearing-their-seatbelt-after-the-intervention-is-equal-to-0.8.}{%
+\paragraph{2.5. Calculate the power of the test to detect the
+alternative hypothesis that the proportion of drivers wearing their
+seatbelt after the intervention is equal to
+0.8.}\label{calculate-the-power-of-the-test-to-detect-the-alternative-hypothesis-that-the-proportion-of-drivers-wearing-their-seatbelt-after-the-intervention-is-equal-to-0.8.}}
+
+We are trying to find
+\(P(Reject H_0 | p = 0.8)=P(X<262 \cup X >298|p=0.8)\).\\
+How did I get those regions? By determining the rejection region under
+the null hypothesis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find the rejection region under the null hypothesis with alpha = 0.05}
+\NormalTok{lower }\OtherTok{=} \FunctionTok{qbinom}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\DecValTok{400}\NormalTok{, }\FloatTok{0.7}\NormalTok{) }\CommentTok{\# 262}
+\CommentTok{\# Get the difference from the null hypothesis average}
+\NormalTok{upper }\OtherTok{=} \FunctionTok{qbinom}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DecValTok{400}\NormalTok{, }\FloatTok{0.7}\NormalTok{) }\CommentTok{\#298}
+\CommentTok{\# Rejection region for two{-}sided test with alpha = .05 is between 0:262, 298:400}
+\FunctionTok{print}\NormalTok{(}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dbinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\NormalTok{lower, upper}\SpecialCharTok{:}\DecValTok{400}\NormalTok{), }\DecValTok{400}\NormalTok{, }\FloatTok{0.8}\NormalTok{)), }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.997
+\end{verbatim}
+
+The power of the test is 99.7\%, which is very high.
+
+\hypertarget{question-3}{%
+\subsection{Question 3}\label{question-3}}
+
+\hypertarget{the-data-come-from-a-study-of-lead-exposure-and-iq-in-children.-iq-scores-were-measured-on-a-sample-of-children-living-in-a-community-near-a-source-of-lead.-the-iq-scores-were-age-standardized-using-established-normal-values-for-the-us-population.-such-age-standardized-scores-have-a-mean-of-100-and-a-standard-deviation-of-15-in-the-us-population.}{%
+\subsubsection{The data come from a study of lead exposure and IQ in
+children. IQ scores were measured on a sample of children living in a
+community near a source of lead. The IQ scores were age-standardized
+using established normal values for the US population. Such
+age-standardized scores have a mean of 100 and a standard deviation of
+15 in the US
+population.}\label{the-data-come-from-a-study-of-lead-exposure-and-iq-in-children.-iq-scores-were-measured-on-a-sample-of-children-living-in-a-community-near-a-source-of-lead.-the-iq-scores-were-age-standardized-using-established-normal-values-for-the-us-population.-such-age-standardized-scores-have-a-mean-of-100-and-a-standard-deviation-of-15-in-the-us-population.}}
+
+\hypertarget{create-a-histogram-of-the-iq-variable.-is-the-distribution-approximately-normal}{%
+\paragraph{3.1. Create a histogram of the IQ variable. Is the
+distribution approximately
+normal?}\label{create-a-histogram-of-the-iq-variable.-is-the-distribution-approximately-normal}}
+
+\includegraphics{HW-1_Solutions_files/figure-latex/unnamed-chunk-17-1.pdf}
+This histogram shows that IQ scores are not normally distributed.\\
+ALSO ACCEPTABLE: Any thoughtful justification
+
+\hypertarget{calculate-the-sample-mean-and-sample-sd-of-iq.-how-do-they-compare-numerically-to-the-us-population-values}{%
+\paragraph{3.2. Calculate the sample mean and sample SD of IQ. How do
+they compare numerically to the US population
+values?}\label{calculate-the-sample-mean-and-sample-sd-of-iq.-how-do-they-compare-numerically-to-the-us-population-values}}
+
+\(\bar x=\) 91.081 \(\\s=\) 14.404
+
+The mean IQ is lower and the standard deviation in IQ scores is higher
+than the US population values.
+
+\hypertarget{test-the-null-hypothesis-that-the-mean-iq-score-in-the-community-is-equal-to-100-using-the-2-sided-1-sample-t-test-with-a-significance-level-of-0.05.-state-the-value-of-the-test-statistic-and-whether-or-not-you-reject-the-null-hypothesis-at-significance-level-0.05.}{%
+\paragraph{3.3. Test the null hypothesis that the mean IQ score in the
+community is equal to 100 using the 2-sided 1-sample t-test with a
+significance level of 0.05. State the value of the test statistic and
+whether or not you reject the null hypothesis at significance level
+0.05.}\label{test-the-null-hypothesis-that-the-mean-iq-score-in-the-community-is-equal-to-100-using-the-2-sided-1-sample-t-test-with-a-significance-level-of-0.05.-state-the-value-of-the-test-statistic-and-whether-or-not-you-reject-the-null-hypothesis-at-significance-level-0.05.}}
+
+\[H_0: \mu = 100\] \[H_A: \mu \neq 100\] \[\alpha=.05\]
+
+\[t= \frac{\bar x - \mu_0}{\frac{s}{\sqrt{n}}}\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{=}\NormalTok{ (mean\_iq }\SpecialCharTok{{-}} \DecValTok{100}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ (sd\_iq }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(iq)))}
+\NormalTok{t\_crit }\OtherTok{=} \FunctionTok{qt}\NormalTok{(.}\DecValTok{025}\NormalTok{, }\AttributeTok{df =} \FunctionTok{nrow}\NormalTok{(iq) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Test statistic = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(z, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Test statistic = -6.895"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}T{-}critical = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(t\_crit, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "T-critical = -1.979"
+\end{verbatim}
+
+\(t=\) -6.895 \(< t_{.05, 123}=\) -1.979
+
+Since our calculated t is less than our critical T statistic with
+\(\alpha = .05\) and 123 degrees of freedom, we reject the null
+hypothesis that the mean IQ of this sample is 100.
+
+\hypertarget{give-the-p-value-for-the-test-in-the-previous-question.-state-the-interpretation-of-the-p-value.}{%
+\paragraph{3.4. Give the p-value for the test in the previous question.
+State the interpretation of the
+p-value.}\label{give-the-p-value-for-the-test-in-the-previous-question.-state-the-interpretation-of-the-p-value.}}
+
+Calculate this result using the the T-distribution with \(n-1\) degrees
+of freedom.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_val }\OtherTok{=} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{pt}\NormalTok{(z, }\AttributeTok{df =} \FunctionTok{nrow}\NormalTok{(iq) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}p = \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(p\_val, }\DecValTok{4}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "p = 0"
+\end{verbatim}
+
+The p-value for this test is \(< .001\) \textbf{which means} there is
+\(< 0.001\) probability of seeing a test statistic as extreme or more
+extreme than our sample mean under the null hypothesis.
+
+\hypertarget{compute-a-95-confidence-interval-for-the-mean-iq.-do-the-confidence-interval-and-hypothesis-test-give-results-that-agree-or-conflict-with-each-other-explain.}{%
+\paragraph{3.5. Compute a 95\% confidence interval for the mean IQ. Do
+the confidence interval and hypothesis test give results that agree or
+conflict with each other?
+Explain.}\label{compute-a-95-confidence-interval-for-the-mean-iq.-do-the-confidence-interval-and-hypothesis-test-give-results-that-agree-or-conflict-with-each-other-explain.}}
+
+Use \(t^*=\) 1.979 to find \(\hat{IQ} \pm t^*_{df=123}SE\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_crit }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{qt}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\AttributeTok{df =} \FunctionTok{nrow}\NormalTok{(iq) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{))}
+\NormalTok{se }\OtherTok{=}\NormalTok{ sd\_iq }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(iq))}
+\NormalTok{lower }\OtherTok{=}\NormalTok{ mean\_iq }\SpecialCharTok{{-}}\NormalTok{ t\_crit }\SpecialCharTok{*}\NormalTok{ se}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ mean\_iq }\SpecialCharTok{+}\NormalTok{ t\_crit }\SpecialCharTok{*}\NormalTok{ se}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower, upper), }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 88.520 93.641
+\end{verbatim}
+
+These results agree with the previous questions' results. Since the null
+hypothesis IQ is not contained within the 95\% confidence interval, we
+can reject the null hypothesis that \(\bar{IQ}=100\).
+
+Since we have a small sample size, it is incorrect to use \(1.96\) as
+your critical value to calculate the confidence interval.
+
+\hypertarget{repeat-the-hypothesis-test-and-confidence-interval-using-a-significance-level-of-0.01-and-a-99-confidence-interval.}{%
+\paragraph{3.6. Repeat the hypothesis test and confidence interval using
+a significance level of 0.01 and a 99\% confidence
+interval.}\label{repeat-the-hypothesis-test-and-confidence-interval-using-a-significance-level-of-0.01-and-a-99-confidence-interval.}}
+
+Use \(t^*=\) 2.616 to find \(\hat{IQ} \pm t^*_{df=123}SE\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_crit }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{qt}\NormalTok{(}\FloatTok{0.005}\NormalTok{, }\AttributeTok{df =} \FunctionTok{nrow}\NormalTok{(iq) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{))}
+\NormalTok{se }\OtherTok{=}\NormalTok{ sd\_iq }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(iq))}
+\NormalTok{lower }\OtherTok{=}\NormalTok{ mean\_iq }\SpecialCharTok{{-}}\NormalTok{ t\_crit }\SpecialCharTok{*}\NormalTok{ se}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ mean\_iq }\SpecialCharTok{+}\NormalTok{ t\_crit }\SpecialCharTok{*}\NormalTok{ se}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\FunctionTok{c}\NormalTok{(lower, upper), }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 87.696 94.465
+\end{verbatim}
+
+Here, too, we reject the null hypothesis because it is not contained
+within the confidence interval.
+
+\end{document}
