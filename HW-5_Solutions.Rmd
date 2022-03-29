@@ -1,0 +1,167 @@
+---
+title: "Homework Assignment 5"
+author: "Shrusti Ghela"
+date: "February 24, 2022"
+output: 
+  pdf_document:
+    keep_tex: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Data: “Sales_sample.csv”.
+
+The data are a random sample of size 1000 from the “Sales” data (after removing observations with missing values).
+
+Variables:
+
+LAST_SALE_PRICE: the sale price of the home
+SQFT: area of the house (sq. ft.)
+LOT_SIZE: area of the lot (sq. ft.)
+BEDS: number of bedrooms
+BATHS: number of bathrooms
+
+```{r, echo=FALSE}
+sales_data <- read.csv("Sales_sample.csv")
+```
+
+**1.1. Fit a linear regression model (Model 1) with sale price as response variable and SQFT, LOT_SIZE, BEDS, and BATHS as predictor variables. Add the fitted values and the residuals from the models as new variables in your data set. Show the R code you used for this question.**
+
+```{r}
+model_1 <- lm(LAST_SALE_PRICE ~ SQFT + LOT_SIZE + BEDS + BATHS, data=sales_data)
+
+summary(model_1)
+```
+
+```{r}
+names(model_1)
+```
+
+```{r}
+model_1$coefficients
+```
+
+```{r}
+sales_data$fitted_val_m1 <- model_1$fitted.values
+head(sales_data)
+```
+```{r}
+sales_data$residual_m1 <- sales_data$LAST_SALE_PRICE - sales_data$fitted_val_m1
+head(sales_data)
+```
+
+**1.2. Create a histogram of the residuals. Based on this graph does the normality assumption hold?**
+
+```{r}
+hist(sales_data$residual_m1, breaks=25)
+```
+
+The histogram of the residuals from the Sales data looks fairly close to normal.(with exception of a few outliers)
+
+**Answer the following questions using residual plots for the model. You may make the plots using the residuals and fitted variables added to your data set or you may use the ‘plot’ function. You do not need to display the plots in your submission.**
+
+
+```{r}
+plot(model_1)
+```
+
+**1.3. Assess the linearity assumption of the regression model. Explain by describing a pattern in one or more residual plots. **
+
+The assumption of linearity means that the relationships between mean response and each predictor variable are linear. 
+In terms of the model, this is stated as E$(\epsilon_i)=0$ for all $i$.
+
+Linearity is necessary for linear regression, but should not be interpreted too strictly because it rarely if ever is exactly true.
+
+To check for the linearity assumption, we observe the Residuals vs Fitted plot. From that plot, we can see that it is clustered towards lower sales price. There doesn't necessarily seem to be a pattern here, but also it doesn't look as random as its supposed to. So, I think the assumption of linearity is not met.
+
+**1.4. Assess the constant variance assumption of the regression model. Explain by describing a pattern in one or more residual plots.**
+
+The constant variance assumption is that the errors $\epsilon_i$ all have the same variance, i.e., var$(\epsilon_i)=\sigma^2$ for some (usually unknown) $\sigma^2$. It is also known as _homoscedasticity_.
+
+Non-constant variance can have a large effect on the performance of confidence intervals and hypothesis tests for  regression coefficients.
+The effect can be to make inferences either overly conservative or anti-conservative.
+
+Non-constant variance (like non-independence) is a problem
+_no matter how large the sample size_.
+
+The plot of residuals against fitted values shows some evidence of non-constant variance - the residuals are more spread out for the higher sale price as compared to the lower sale price.
+
+**1.5. Assess the normality assumption of the linear regression model. Explain by describing a pattern in one or more residual plots.**
+
+The normality assumption is that the errors $\epsilon_i$ are normally distributed. 
+
+We use the residuals to check normality by applying histograms and q-q plots to the residuals.
+
+In the q-q plot, We can see that the points lie mostly along the straight diagonal line with some deviations along each of the tails. Based on this plot, we could safely assume that this set of data is normally distributed.
+
+Also, normality of the error distribution is only necessary if the sample sizes are not sufficiently large. Since we have sufficiently large sample size of data, normality holds irrespective. 
+
+**1.6. Give an overall assessment of how well the assumptions hold for the regression model.**
+
+Overall, the linearity and constant variance assumption doesn't hold. But the normality assumption holds.
+
+**1.7. Would statistical inferences based on this model be valid? Explain.**
+
+The assumptions are needed to justify __statistical inference__ for the regression coefficients.
+This includes confidence intervals as well as hypothesis tests for the coefficients.
+
+It is important to note that the assumptions are not needed for fitting the model and using the results for purposes other than statistical inference. Thus, we can use linear regression models in a descriptive or exploratory fashion without worrying about assumptions, as long as we don't make inferential statements about the model or the parameters. 
+
+So, since all our assumptions are not met, the statistical inferences based on model 1 would not be valid.
+
+**1.8. Create a new variable (I will call it LOG_PRICE) which is calculated as the log-transformation of the sale price variable. Use base-10 logarithms. Fit a linear regression model (Model 2) with LOG_PRICE as response variable and SQFT, LOT_SIZE, BEDS, and BATHS as predictor variables. Report the table of coefficient estimates with standard errors and p-values.**
+
+```{r}
+sales_data$LOG_PRICE <- log10(sales_data$LAST_SALE_PRICE)
+head(sales_data)
+```
+```{r}
+model_2 <- lm(LOG_PRICE ~ SQFT + LOT_SIZE + BEDS + BATHS, data=sales_data)
+summary(model_2)
+```
+
+**1.9. Give an interpretation of the estimated coefficient of the variable SQFT in Model 2. **
+
+The interpretation of $\beta$ is the average _difference_ in the mean of $Y$ per unit _difference_ in $X$.
+The average difference in the mean of log of LAST_SALE_PRICE(LOG_PRICE) per unit difference in SQFT is 0.0001005839 considering the other varibles remain constant. 
+
+**Answer the following questions using residual plots for Model 2. You do not need to display the plots in your submission.**
+
+```{r}
+plot(model_2)
+```
+
+**1.10. Assess the linearity assumption of Model 2. Explain by describing a pattern in one or more residual plots. **
+
+To check for the linearity assumption, we observe the Residuals vs Fitted plot. From that plot, we can see that it is still a little bit clustered towards lower sales price. There doesn't necessarily seem to be a pattern here, but it looks fairly random as its supposed to. So, I think the assumption of linearity is met.
+
+As we discussed earlier, Linearity is necessary for linear regression, but should not be interpreted too strictly because it rarely if ever is exactly true. So, I didn't interpret the clustering in the graph very strictly. 
+
+
+**1.11. Assess the constant variance assumption of Model 2. Explain by describing a pattern in one or more residual plots.**
+
+Using the residual vs fitted plot, we can see that most of the data lie evenly on either side of 0 residual (excluding a few outliers). Unlike the graph for the model 1, we cannot see the spread of residual grow larger with the increase in the fitted value. This graph suggests that the assumption of constant-variance is met. 
+
+**1.12. Assess the normality assumption of Model 2. Explain by describing a pattern in one or more residual plots.**
+
+The normality assumption is that the errors $\epsilon_i$ are normally distributed. 
+
+We use the residuals to check normality by applying histograms and q-q plots to the residuals.
+
+In the q-q plot, We can see that the points lie mostly along the straight diagonal line with some deviations along each of the tails. Based on this plot, we could safely assume that this set of data is normally distributed.
+
+
+**1.13. Give an overall assessment of how well the assumptions hold for Model 2.**
+
+Considering model 2, the linearity, constant variance and normality assumptions hold.
+
+**1.14. Would statistical inferences based on Model 2 be valid? Explain.**
+
+The assumptions are needed to justify __statistical inference__ for the regression coefficients.
+This includes confidence intervals as well as hypothesis tests for the coefficients.
+
+It is important to note that the assumptions are not needed for fitting the model and using the results for purposes other than statistical inference. Thus, we can use linear regression models in a descriptive or exploratory fashion without worrying about assumptions, as long as we don't make inferential statements about the model or the parameters. 
+
+So, since all our assumptions hold, the statistical inferences based on model 2 would be valid.
