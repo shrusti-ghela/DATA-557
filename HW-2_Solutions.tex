@@ -1,0 +1,833 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{Homework Assignment 2}
+\author{Shrusti Ghela}
+\date{February 03, 2022}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Homework Assignment 2},
+  pdfauthor={Shrusti Ghela},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\textbf{Question 1:}
+
+Data: `temperature\_experiment.csv'
+
+A manufacturing process is run at a temperature of 60 deg C. The
+manufacturer would like to know if increasing the temperature would
+yield an increase in output. Increasing the temperature would be more
+expensive, so an increase would only be used in future if it increased
+output. It seems unlikely that increasing the temperature would decrease
+output and, even if it did, there would be no value in having that
+information. An experiment was performed to assess the effect of
+temperature on the output of a manufacturing process. For this
+experiment, temperatures of 60 or 75 degrees C were randomly assigned to
+process runs. It was desired to gather more information about output at
+the new temperature so temperatures were randomly assigned to process
+runs at a ratio of 2 to 1 (2 runs at temperature 75 for every 1 at
+temperature 60). The process output was recorded from each run. The
+variables in the data set are:
+
+run: Run number
+
+temp: Temperature
+
+output: Process output
+
+\textbf{1.1. Perform the large-sample Z-test to compare mean output for
+the two temperatures. Give the value of the test statistic and the
+p-value for the test.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m }\OtherTok{=} \FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{tapply}\NormalTok{(output, temp,mean))}
+\NormalTok{s }\OtherTok{=} \FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{tapply}\NormalTok{(output, temp,sd))}
+\NormalTok{n }\OtherTok{=} \FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{tapply}\NormalTok{(output, temp,length))}
+\FunctionTok{data.frame}\NormalTok{(m,s,n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          m         s  n
+## 60 1001.24  9.569187 10
+## 75 1019.46 28.930705 20
+\end{verbatim}
+
+We use the following test statistic:
+
+\[
+Z = \frac{\bar X_A - \bar X_B}{\sqrt{s^2_A/n_A+s^2_B/n_B}}.
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z}\OtherTok{=}\NormalTok{(m[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{{-}}\NormalTok{m[}\DecValTok{2}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(((s[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{**}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n[}\DecValTok{1}\NormalTok{])}\SpecialCharTok{+}\NormalTok{((s[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{**}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n[}\DecValTok{2}\NormalTok{]))}
+\FunctionTok{data.frame}\NormalTok{(z,}\AttributeTok{p=}\FunctionTok{round}\NormalTok{((}\FunctionTok{pnorm}\NormalTok{(z)),}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            z      p
+## 60 -2.551155 0.0054
+\end{verbatim}
+
+\textbf{1.2. Do you reject the null hypothesis at a significance level
+of 0.05?}
+
+The p-value(0.0054) is less than 0.05, so we would reject the null
+hypothesis of true difference of means is greater than or equal to o at
+the 0.05 level of significance.
+
+\textbf{1.3. State the null hypothesis for the test.}
+
+The question clearly states that we are only interested in if there is
+an increase in the output when the temperature is increased. We are not
+interested in the scenario where increasing the temperature would
+decrease output. Considering this, since we are interested only in the
+increase in the output,
+
+We define the null hypothesis as \[H_0:\mu_1\ge\mu_2,\] where \(\mu_1\)
+and \(\mu_2\) are the mean of the process output for temperatures 60 and
+75, respectively.
+
+we set the alternative hypothesis to be \[H_1:\mu_1<\mu_2.\]
+
+\textbf{1.4 Perform the unequal-variance (Welch) t-test to compare mean
+output in the two temperature groups. Report the test statistic and the
+p-value for the test.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{t.test}\NormalTok{(output[temp}\SpecialCharTok{==}\StringTok{"60"}\NormalTok{], output[temp}\SpecialCharTok{==}\StringTok{"75"}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{F, }\AttributeTok{alternative=}\StringTok{"less"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  output[temp == "60"] and output[temp == "75"]
+## t = -2.5512, df = 25.633, p-value = 0.008531
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##       -Inf -6.032275
+## sample estimates:
+## mean of x mean of y 
+##   1001.24   1019.46
+\end{verbatim}
+
+\textbf{1.5. Perform the equal-variance t-test to compare mean output in
+the two temperature groups. Report the test statistic and the p-value
+for the test.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{t.test}\NormalTok{(output[temp}\SpecialCharTok{==}\StringTok{"60"}\NormalTok{], output[temp}\SpecialCharTok{==}\StringTok{"75"}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{T, }\AttributeTok{alternative=}\StringTok{"less"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  output[temp == "60"] and output[temp == "75"]
+## t = -1.9248, df = 28, p-value = 0.03224
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##       -Inf -2.116827
+## sample estimates:
+## mean of x mean of y 
+##   1001.24   1019.46
+\end{verbatim}
+
+\textbf{1.6. Which of the three tests do you think is most valid for
+this experiment? Why?}
+
+\begin{verbatim}
+##          m         s  n
+## 60 1001.24  9.569187 10
+## 75 1019.46 28.930705 20
+\end{verbatim}
+
+From this, we can see that the standard deviations for the two groups
+are not equal. Also, the sample size is not sufficiently large.
+Considering these two facts, I believe that Welch test would be the most
+valid test for this experiment.
+
+\textbf{1.7. Calculate a 95\% confidence interval for the difference
+between mean output using the large-sample method.}
+
+Here, I have used two-tailed test instead of one-tailed test to
+calculate the confidence interval
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{se}\OtherTok{=}\FunctionTok{sqrt}\NormalTok{(s[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{**}\DecValTok{2}\SpecialCharTok{/}\NormalTok{n[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ s[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{**}\DecValTok{2}\SpecialCharTok{/}\NormalTok{n[}\DecValTok{2}\NormalTok{])}
+\NormalTok{z}\FloatTok{.05} \OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}
+\NormalTok{lower }\OtherTok{=}\NormalTok{ m[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{{-}}\NormalTok{m[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{{-}}\NormalTok{z}\FloatTok{.05}\SpecialCharTok{*}\NormalTok{se}
+\NormalTok{upper }\OtherTok{=}\NormalTok{ m[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{{-}}\NormalTok{m[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{+}\NormalTok{z}\FloatTok{.05}\SpecialCharTok{*}\NormalTok{se}
+\NormalTok{lower}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       60 
+## -32.2178
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{upper}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        60 
+## -4.222204
+\end{verbatim}
+
+\textbf{1.8. Calculate a 95\% confidence interval for the difference
+between mean output using a method that corresponds to the Welch test.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{t.test}\NormalTok{(output[temp}\SpecialCharTok{==}\StringTok{"60"}\NormalTok{], output[temp}\SpecialCharTok{==}\StringTok{"75"}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{F, }\AttributeTok{alternative=}\StringTok{"less"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  output[temp == "60"] and output[temp == "75"]
+## t = -2.5512, df = 25.633, p-value = 0.008531
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##       -Inf -6.032275
+## sample estimates:
+## mean of x mean of y 
+##   1001.24   1019.46
+\end{verbatim}
+
+For two-tailed test, the confidence interval is given by:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{t.test}\NormalTok{(output[temp}\SpecialCharTok{==}\StringTok{"60"}\NormalTok{], output[temp}\SpecialCharTok{==}\StringTok{"75"}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{F, }\AttributeTok{alternative=}\StringTok{"two.sided"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  output[temp == "60"] and output[temp == "75"]
+## t = -2.5512, df = 25.633, p-value = 0.01706
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -32.910534  -3.529466
+## sample estimates:
+## mean of x mean of y 
+##   1001.24   1019.46
+\end{verbatim}
+
+\textbf{1.9. Calculate a 95\% confidence interval for the difference
+between mean output using a method that corresponds to the
+equal-variance t-test.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{t.test}\NormalTok{(output[temp}\SpecialCharTok{==}\StringTok{"60"}\NormalTok{], output[temp}\SpecialCharTok{==}\StringTok{"75"}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{T, }\AttributeTok{alternative =} \StringTok{"less"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  output[temp == "60"] and output[temp == "75"]
+## t = -1.9248, df = 28, p-value = 0.03224
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##       -Inf -2.116827
+## sample estimates:
+## mean of x mean of y 
+##   1001.24   1019.46
+\end{verbatim}
+
+The confidence interval for two-tailed test:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{with}\NormalTok{(temperature, }\FunctionTok{t.test}\NormalTok{(output[temp}\SpecialCharTok{==}\StringTok{"60"}\NormalTok{], output[temp}\SpecialCharTok{==}\StringTok{"75"}\NormalTok{], }\AttributeTok{var.equal=}\NormalTok{T, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  output[temp == "60"] and output[temp == "75"]
+## t = -1.9248, df = 28, p-value = 0.06448
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -37.610544   1.170544
+## sample estimates:
+## mean of x mean of y 
+##   1001.24   1019.46
+\end{verbatim}
+
+\textbf{1.10. Apart from any effect on the mean output, do the results
+of the experiment suggest a disadvantage of the higher temperature?} The
+variance in output has increased due to increase in temperature. High
+variation is a disadvantage. Another disadvantage the cost associated
+with the increase in temperature. But it is not a parameter in the
+experiment.
+
+\textbf{Question 2}
+
+Data set: `defects.csv'
+
+The data are from an experiment to compare 4 processing methods for
+manufacturing steel ball bearings. The 4 process methods were run for
+one day and a random sample of 1\% of the ball bearings from the day was
+taken from each of the 4 methods. Because the processes produce ball
+bearings at different rates the sample sizes were not the same for the 4
+methods. Each sampled ball bearing had its weight measured to the
+nearest 0.1 g and the number of surface defects was counted. The
+variables in the data set are:
+
+Sample: sample number Method: A, B, C, or D Defects: number of defects
+Weight: weight in g
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{defects }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"defects.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{2.1. The target weight for the ball bearings is 10 g. For each
+of the 4 methods it is desired to test the null hypothesis that the mean
+weight is equal to 10. What test should be used?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m }\OtherTok{=} \FunctionTok{with}\NormalTok{(defects, }\FunctionTok{tapply}\NormalTok{(Weight,Method,mean))}
+\NormalTok{s }\OtherTok{=} \FunctionTok{with}\NormalTok{(defects, }\FunctionTok{tapply}\NormalTok{(Weight,Method,sd))}
+\NormalTok{n }\OtherTok{=} \FunctionTok{with}\NormalTok{(defects, }\FunctionTok{tapply}\NormalTok{(Weight,Method,length))}
+
+\FunctionTok{data.frame}\NormalTok{(m,s,n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           m         s  n
+## A 10.002703 0.2918871 74
+## B  9.982667 0.3028573 75
+## C 10.082812 0.4456330 64
+## D 10.167308 0.5833376 52
+\end{verbatim}
+
+We have taken random sample of 1\% of ball bearings for all 4 methods. I
+don't think it is sufficiently large to carry out a z-test, so
+conducting a one-sample two-tailed t-test would be our best option.
+
+\textbf{2.2. Give the p-values for the tests for each method. Include
+your R code for this question.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{], }\AttributeTok{mu=}\DecValTok{10}\NormalTok{, }\AttributeTok{alternative=}\StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  defects$Weight[defects$Method == "A"]
+## t = 0.079652, df = 73, p-value = 0.9367
+## alternative hypothesis: true mean is not equal to 10
+## 95 percent confidence interval:
+##   9.935078 10.070327
+## sample estimates:
+## mean of x 
+##   10.0027
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{], }\AttributeTok{mu=}\DecValTok{10}\NormalTok{, }\AttributeTok{alternative=}\StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  defects$Weight[defects$Method == "B"]
+## t = -0.49565, df = 74, p-value = 0.6216
+## alternative hypothesis: true mean is not equal to 10
+## 95 percent confidence interval:
+##   9.912986 10.052348
+## sample estimates:
+## mean of x 
+##  9.982667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"C"}\NormalTok{], }\AttributeTok{mu=}\DecValTok{10}\NormalTok{, }\AttributeTok{alternative=}\StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  defects$Weight[defects$Method == "C"]
+## t = 1.4866, df = 63, p-value = 0.1421
+## alternative hypothesis: true mean is not equal to 10
+## 95 percent confidence interval:
+##   9.971497 10.194128
+## sample estimates:
+## mean of x 
+##  10.08281
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"D"}\NormalTok{], }\AttributeTok{mu=}\DecValTok{10}\NormalTok{, }\AttributeTok{alternative=}\StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  defects$Weight[defects$Method == "D"]
+## t = 2.0682, df = 51, p-value = 0.04371
+## alternative hypothesis: true mean is not equal to 10
+## 95 percent confidence interval:
+##  10.00491 10.32971
+## sample estimates:
+## mean of x 
+##  10.16731
+\end{verbatim}
+
+\textbf{2.3. Apply a Bonferroni correction to your results from the
+previous question to account for inflation of type I error rate due to
+multiple testing. How does the Bonferroni correction change your
+conclusions? In particular, do you have evidence to reject the null
+hypothesis that the mean weight for all 4 methods is equal to 10, at
+significance level 0.05?}
+
+The idea of the Bonferroni correction is to adjust the significance
+level of each test so that the overall probability of a type I error is
+controlled at the desired level.
+
+Here, we want to perform 4 tests, and we want the overall type I error
+of 0.05, we would perform each test with significance level 0.05/4
+
+So, instead of comparing our p-value with 0.05, we compare the p-value
+obtained from the above tests with 0.0125
+
+The p-value(0.9367) is greater than 0.0125, so we would not reject the
+null hypothesis of equal means at the 0.0125 level of significance.
+
+The p-value(0.6216) is greater than 0.0125, so we would not reject the
+null hypothesis of equal means at the 0.0125 level of significance.
+
+The p-value(0.1421) is greater than 0.0125, so we would not reject the
+null hypothesis of equal means at the 0.0125 level of significance.
+
+The p-value(0.04371) is greater than 0.0125, so we would not reject the
+null hypothesis of equal means at the 0.0125 level of significance.
+
+Overall, because the p-values of all test are greater than 0.0125, we
+would not reject the null hypothesis of equal means at 0.05
+significance.
+
+\textbf{2.4. It is is desired to compare mean weights of the 4 methods.
+This is to be done first by performing pairwise comparisons of mean
+weight for the different methods. What test should be used for these
+comparisons?}
+
+We try to do this by testing all the pairwise hypotheses,
+\(H_0:\mu_a=\mu_b\), \(H_0:\mu_a=\mu_c\), \(H_0:\mu_a=\mu_d\),
+\(H_0:\mu_b=\mu_c\), \(H_0:\mu_b=\mu_d\), and \(H_0:\mu_c=\mu_d\), using
+the two-sample t-test (assuming equal variances)
+
+\textbf{2.5. Report the p-values from all pairwise comparisons. Include
+your R code for this question.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.vs.B}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{],}
+\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{T)}
+\NormalTok{pAB }\OtherTok{=}\NormalTok{ A.vs.B}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{pAB}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6816055
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.vs.C}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{],}
+\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"C"}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{T)}
+\NormalTok{pAC }\OtherTok{=}\NormalTok{ A.vs.C}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{pAC}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2081849
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.vs.D}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{],}
+\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"D"}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{T)}
+\NormalTok{pAD }\OtherTok{=}\NormalTok{ A.vs.D}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{pAD}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0390036
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B.vs.C}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{],}
+\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"C"}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{T)}
+\NormalTok{pBC}\OtherTok{=}\NormalTok{ B.vs.C}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{pBC}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1191898
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B.vs.D}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{],}
+\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"D"}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{T)}
+\NormalTok{pBD }\OtherTok{=}\NormalTok{ B.vs.D}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{pBD}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02150551
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{C.vs.D}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"C"}\NormalTok{],}
+\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"D"}\NormalTok{],}\AttributeTok{var.equal=}\NormalTok{T)}
+\NormalTok{pCD }\OtherTok{=}\NormalTok{ C.vs.D}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{pCD}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3784366
+\end{verbatim}
+
+\textbf{2.6. Apply a Bonferroni correction to your results of the
+previous question to account for inflation of type I error rate due to
+multiple testing. What conclusion would you draw from these results?
+Would you reject the null hypothesis of no difference between any pair
+of means among the 4 methods, at significance level 0.05?}
+
+Let us first estimate the Type I Error probability using simulation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{n}\OtherTok{=}\DecValTok{5}
+\NormalTok{m}\OtherTok{=}\DecValTok{10}
+\NormalTok{sigma}\OtherTok{=}\DecValTok{2}
+\NormalTok{reps}\OtherTok{=}\DecValTok{2000}
+\NormalTok{pvalues}\OtherTok{=}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{pAB=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps), }\AttributeTok{pAC=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps), }\AttributeTok{pAD=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps),}\AttributeTok{pBC=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps),}\AttributeTok{pBD=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps), }\AttributeTok{pCD=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps))}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{reps)\{}
+\NormalTok{  x1 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x2 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x3 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x4 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x5 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x6 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pAB[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x1,x2,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pAC[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x1,x3,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pAD[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x1,x4,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pBC[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x2,x3,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pBD[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x2,x4,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pCD[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x3,x4,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+
+\NormalTok{\}}
+\NormalTok{reject }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(pvalues}\SpecialCharTok{\textless{}}\FloatTok{0.05}\NormalTok{, }\AttributeTok{any.rejection=}\FunctionTok{apply}\NormalTok{(pvalues}\SpecialCharTok{\textless{}}\FloatTok{0.05}\NormalTok{, }\DecValTok{1}\NormalTok{, any))}
+\FunctionTok{apply}\NormalTok{(reject,}\DecValTok{2}\NormalTok{,mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           pAB           pAC           pAD           pBC           pBD 
+##        0.0565        0.0545        0.0500        0.0520        0.0535 
+##           pCD any.rejection 
+##        0.0445        0.2160
+\end{verbatim}
+
+Each of the six tests has an appropriate type I error probability of
+close to 0.05 but the overall type I error probability is greater than
+0.22
+
+If we perform 6 tests, each of which has probability 0.05 of rejecting,
+then the probability of at least one of the tests rejecting cannot be
+greater than 0.3
+
+In our simulation of type I error, the probability of rejecting was
+0.2160, less than 0.3
+
+The idea of the Bonferroni correction is to adjust the significance
+level of each test so that the overall probability of a type I error is
+controlled at the desired level.
+
+Applying Bonferroni correction to the previous simulation
+
+We perform 6 tests and we want an overall type I error of 0.05, we
+perform each test with significance level 0.05/6
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{n}\OtherTok{=}\DecValTok{5}
+\NormalTok{m}\OtherTok{=}\DecValTok{10}
+\NormalTok{sigma}\OtherTok{=}\DecValTok{2}
+\NormalTok{reps}\OtherTok{=}\DecValTok{2000}
+\NormalTok{pvalues}\OtherTok{=}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{pAB=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps), }\AttributeTok{pAC=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps), }\AttributeTok{pAD=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps),}\AttributeTok{pBC=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps),}\AttributeTok{pBD=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps), }\AttributeTok{pCD=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, reps))}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{reps)\{}
+\NormalTok{  x1 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x2 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x3 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x4 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x5 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  x6 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n,m,sigma)}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pAB[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x1,x2,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pAC[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x1,x3,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pAD[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x1,x4,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pBC[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x2,x3,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pBD[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x2,x4,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+\NormalTok{  pvalues}\SpecialCharTok{$}\NormalTok{pCD[i]}\OtherTok{=}\FunctionTok{t.test}\NormalTok{(x3,x4,}\AttributeTok{var.equal =}\NormalTok{ T)}\SpecialCharTok{$}\NormalTok{p.value}
+
+\NormalTok{\}}
+\NormalTok{reject }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(pvalues}\SpecialCharTok{\textless{}}\FloatTok{0.05}\SpecialCharTok{/}\DecValTok{6}\NormalTok{, }\AttributeTok{any.rejection=}\FunctionTok{apply}\NormalTok{(pvalues}\SpecialCharTok{\textless{}}\FloatTok{0.05}\SpecialCharTok{/}\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{, any))}
+\FunctionTok{apply}\NormalTok{(reject,}\DecValTok{2}\NormalTok{,mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           pAB           pAC           pAD           pBC           pBD 
+##        0.0105        0.0085        0.0105        0.0110        0.0055 
+##           pCD any.rejection 
+##        0.0075        0.0425
+\end{verbatim}
+
+Since, all the p-values (0.6816055, 0.2081849, 0.0390036, 0.1191898,
+0.02150551, 0.3784366) are greater than 0.0083, we would not reject the
+null hypothesis of no difference between any pair of means among the 4
+methods, at significance level 0.05
+
+The overall type I error probability after applying Bonferroni
+correction is 0.0425 (close to 0.05).
+
+We can see the proof of the fact that the Bonferroni procedure is
+conservative, that is it leads to a test that will have strictly less
+than the desired type I error probability.
+
+Also, when we deal with large number of groups, the Bonferroni procedure
+becomes extremely conservative. The consequence is that the procedure
+will have very low power to detect differences when they exist.
+
+\textbf{2.7. Compare the mean weights for the 4 methods using ANOVA.
+State the F-statistic and the p-value for the F-test. Include your R
+code for this question.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xA}\OtherTok{=}\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{]}
+\NormalTok{xB}\OtherTok{=}\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{]}
+\NormalTok{xC}\OtherTok{=}\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"C"}\NormalTok{]}
+\NormalTok{xD}\OtherTok{=}\NormalTok{defects}\SpecialCharTok{$}\NormalTok{Weight[defects}\SpecialCharTok{$}\NormalTok{Method}\SpecialCharTok{==}\StringTok{"D"}\NormalTok{]}
+
+\NormalTok{nA}\OtherTok{=}\FunctionTok{length}\NormalTok{(xA)}
+\NormalTok{nB}\OtherTok{=}\FunctionTok{length}\NormalTok{(xB)}
+\NormalTok{nC}\OtherTok{=}\FunctionTok{length}\NormalTok{(xC)}
+\NormalTok{nD}\OtherTok{=}\FunctionTok{length}\NormalTok{(xD)}
+
+\NormalTok{xbarA }\OtherTok{=} \FunctionTok{mean}\NormalTok{(xA)}
+\NormalTok{xbarB }\OtherTok{=} \FunctionTok{mean}\NormalTok{(xB)}
+\NormalTok{xbarC }\OtherTok{=} \FunctionTok{mean}\NormalTok{(xC)}
+\NormalTok{xbarD }\OtherTok{=} \FunctionTok{mean}\NormalTok{(xD)}
+
+\NormalTok{xbar }\OtherTok{=} \FunctionTok{mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(xA, xB, xC, xD))}
+\NormalTok{ss.total }\OtherTok{=} \FunctionTok{sum}\NormalTok{((xA}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{sum}\NormalTok{((xB}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{sum}\NormalTok{((xC}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\FunctionTok{sum}\NormalTok{((xD}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{ss.within }\OtherTok{=} \FunctionTok{sum}\NormalTok{((xA}\SpecialCharTok{{-}}\NormalTok{xbarA)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{sum}\NormalTok{((xB}\SpecialCharTok{{-}}\NormalTok{xbarB)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{sum}\NormalTok{((xC}\SpecialCharTok{{-}}\NormalTok{xbarC)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{sum}\NormalTok{((xD}\SpecialCharTok{{-}}\NormalTok{xbarD)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{ss.between }\OtherTok{=}\NormalTok{ nA}\SpecialCharTok{*}\NormalTok{(xbarA}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{+}\NormalTok{nB}\SpecialCharTok{*}\NormalTok{(xbarB}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{+}\NormalTok{nC}\SpecialCharTok{*}\NormalTok{(xbarC}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ nD}\SpecialCharTok{*}\NormalTok{(xbarD}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}
+\FunctionTok{data.frame}\NormalTok{(ss.between,ss.within,ss.total)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ss.between ss.within ss.total
+## 1   1.289595  42.87244 44.16204
+\end{verbatim}
+
+The ANOVA F-statistic is based on the relative sizes of the between and
+within sums of squares. First the sums of squares are converted to
+``mean squares'' as follows: \[
+\mbox{MS}_B=\frac{\mbox{SS}_B}{k-1}
+\]
+
+where \(k\) is the number of groups, and \[
+\mbox{MS}_W=\frac{\mbox{SS}_W}{N-k}
+\]
+
+where \(N=\sum_{i=1}^k n_i\) is the total sample size. Then the \(F\)
+statistic is the ratio of the mean-squares: \[
+F=\frac{\mbox{MS}_B}{\mbox{MS}_W}
+\] A large value of \(F\) provides evidence against the null hypothesis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{aov}\NormalTok{(defects}\SpecialCharTok{$}\NormalTok{Weight}\SpecialCharTok{\textasciitilde{}}\FunctionTok{as.factor}\NormalTok{(Method), }\AttributeTok{data=}\NormalTok{defects))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    Df Sum Sq Mean Sq F value Pr(>F)  
+## as.factor(Method)   3   1.29  0.4299   2.617 0.0515 .
+## Residuals         261  42.87  0.1643                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{2.8. What do you conclude from the ANOVA?} The p-value (0.0515)
+is (slightly) greater than 0.05, which indicates that there is not
+evidence against the null hypothesis of equal group means. So, we would
+not reject the null hypothesis of equal group means at 0.05 significance
+level.
+
+\textbf{2.9. How does your conclusion from ANOVA compare to the
+conclusion from the pairwise comparisons?} We arrive at the same
+conclusions on the null hypothesis by performing ANOVA and pairwise
+comparisons (with Bonferroni correction) However, we arrive at different
+conclusions on the null hypothesis by performing pairwise comparisons
+without Bonferroni correction.
+
+\end{document}

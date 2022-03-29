@@ -1,0 +1,362 @@
+---
+title: "Homework Assignment 2"
+author: "Shrusti Ghela"
+date: "February 03, 2022"
+output: 
+  pdf_document:
+    keep_tex: true
+---
+
+**Question 1:**
+
+Data: ‘temperature_experiment.csv’
+
+A manufacturing process is run at a temperature of 60 deg C. The manufacturer would like to know if 
+increasing the temperature would yield an increase in output. Increasing the temperature would be more 
+expensive, so an increase would only be used in future if it increased output. It seems unlikely that 
+increasing the temperature would decrease output and, even if it did, there would be no value in having 
+that information. An experiment was performed to assess the effect of temperature on the output of a 
+manufacturing process. For this experiment, temperatures of 60 or 75 degrees C were randomly assigned 
+to process runs. It was desired to gather more information about output at the new temperature so 
+temperatures were randomly assigned to process runs at a ratio of 2 to 1 (2 runs at temperature 75 for 
+every 1 at temperature 60). The process output was recorded from each run. The variables in the data set 
+are:
+
+run: Run number
+
+temp: Temperature
+
+output: Process output
+
+
+
+
+```{r, echo=FALSE}
+temperature <- read.csv("temperature_experiment.csv")
+```
+
+**1.1. Perform the large-sample Z-test to compare mean output for the two temperatures. Give the value of 
+the test statistic and the p-value for the test.**
+
+```{r}
+m = with(temperature, tapply(output, temp,mean))
+s = with(temperature, tapply(output, temp,sd))
+n = with(temperature, tapply(output, temp,length))
+data.frame(m,s,n)
+```
+
+
+
+
+We use the following test statistic:
+
+$$
+Z = \frac{\bar X_A - \bar X_B}{\sqrt{s^2_A/n_A+s^2_B/n_B}}.
+$$
+
+```{r}
+z=(m[1]-m[2])/sqrt(((s[1]**2)/n[1])+((s[2]**2)/n[2]))
+data.frame(z,p=round((pnorm(z)),4))
+```
+
+**1.2. Do you reject the null hypothesis at a significance level of 0.05?**
+
+The p-value(0.0054) is less than 0.05,  so we would reject the null hypothesis of true difference of means is greater than or equal to o at the 0.05 level of significance. 
+
+**1.3. State the null hypothesis for the test.**
+
+The question clearly states that we are only interested in if there is an increase in the output when the temperature is increased. We are not interested in the scenario where increasing the temperature would decrease output. Considering this, since we are interested only in the increase in the output,
+
+We define the null hypothesis as
+$$H_0:\mu_1\ge\mu_2,$$
+where $\mu_1$ and $\mu_2$ are the mean of the process output for temperatures 60 and 75, respectively. 
+
+
+we set the alternative hypothesis to be
+$$H_1:\mu_1<\mu_2.$$
+
+**1.4 Perform the unequal-variance (Welch) t-test to compare mean output in the two temperature groups. Report the test statistic and the p-value for the test.**
+
+```{r}
+with(temperature, t.test(output[temp=="60"], output[temp=="75"], var.equal=F, alternative="less"))
+```
+**1.5. Perform the equal-variance t-test to compare mean output in the two temperature groups. Report the test statistic and the p-value for the test.**
+
+```{r}
+with(temperature, t.test(output[temp=="60"], output[temp=="75"], var.equal=T, alternative="less"))
+```
+
+**1.6. Which of the three tests do you think is most valid for this experiment? Why?**
+```{r, echo=FALSE}
+m = with(temperature, tapply(output, temp,mean))
+s = with(temperature, tapply(output, temp,sd))
+n = with(temperature, tapply(output, temp,length))
+data.frame(m,s,n)
+```
+From this, we can see that the standard deviations for the two groups are not equal. Also, the sample size is not sufficiently large. Considering these two facts, I believe that Welch test would be the most valid test for this experiment. 
+
+**1.7. Calculate a 95% confidence interval for the difference between mean output using the large-sample method.**
+
+Here, I have used two-tailed test instead of one-tailed test to calculate the confidence interval
+
+```{r}
+se=sqrt(s[1]**2/n[1] + s[2]**2/n[2])
+z.05 = qnorm(0.975)
+lower = m[1]-m[2]-z.05*se
+upper = m[1]-m[2]+z.05*se
+lower
+upper
+```
+
+**1.8. Calculate a 95% confidence interval for the difference between mean output using a method that corresponds to the Welch test.**
+
+```{r}
+with(temperature, t.test(output[temp=="60"], output[temp=="75"], var.equal=F, alternative="less"))
+```
+For two-tailed test, the confidence interval is given by:
+
+```{r}
+with(temperature, t.test(output[temp=="60"], output[temp=="75"], var.equal=F, alternative="two.sided"))
+```
+**1.9. Calculate a 95% confidence interval for the difference between mean output using a method that corresponds to the equal-variance t-test.**
+
+```{r}
+with(temperature, t.test(output[temp=="60"], output[temp=="75"], var.equal=T, alternative = "less"))
+```
+The confidence interval for two-tailed test:
+```{r}
+with(temperature, t.test(output[temp=="60"], output[temp=="75"], var.equal=T, alternative = "two.sided"))
+```
+
+**1.10. Apart from any effect on the mean output, do the results of the experiment suggest a disadvantage of the higher temperature?**
+The variance in output has increased due to increase in temperature. High variation is a disadvantage. 
+Another disadvantage the cost associated with the increase in temperature. But it is not a parameter in the experiment. 
+
+**Question 2**
+
+Data set: ‘defects.csv’
+
+The data are from an experiment to compare 4 processing methods for manufacturing steel ball bearings. The 4 process methods were run for one day and a random sample of 1% of the ball bearings from the day was taken from each of the 4 methods. Because the processes produce ball bearings at different rates the sample sizes were not the same for the 4 methods. Each sampled ball bearing had its weight measured to the nearest 0.1 g and the number of surface defects was counted. The variables in the data set are:
+
+Sample: sample number
+Method: A, B, C, or D
+Defects: number of defects
+Weight: weight in g
+
+```{r}
+defects <- read.csv("defects.csv")
+```
+
+**2.1. The target weight for the ball bearings is 10 g. For each of the 4 methods it is desired to test the null hypothesis that the mean weight is equal to 10. What test should be used?**
+```{r}
+
+m = with(defects, tapply(Weight,Method,mean))
+s = with(defects, tapply(Weight,Method,sd))
+n = with(defects, tapply(Weight,Method,length))
+
+data.frame(m,s,n)
+
+```
+We have taken random sample of 1% of ball bearings for all 4 methods. I don't think it is sufficiently large to carry out a z-test, so conducting a one-sample two-tailed t-test would be our best option.
+
+**2.2. Give the p-values for the tests for each method. Include your R code for this question.**
+
+```{r}
+t.test(defects$Weight[defects$Method=="A"], mu=10, alternative="two.sided")
+```
+
+```{r}
+t.test(defects$Weight[defects$Method=="B"], mu=10, alternative="two.sided")
+```
+
+```{r}
+t.test(defects$Weight[defects$Method=="C"], mu=10, alternative="two.sided")
+```
+
+```{r}
+t.test(defects$Weight[defects$Method=="D"], mu=10, alternative="two.sided")
+```
+
+**2.3. Apply a Bonferroni correction to your results from the previous question to account for inflation of type I error rate due to multiple testing. How does the Bonferroni correction change your conclusions? In particular, do you have evidence to reject the null hypothesis that the mean weight for all 4 methods is equal to 10, at significance level 0.05?**
+
+The idea of the Bonferroni correction is to adjust the significance level of each test so that the overall probability of a type I error is controlled at the desired level. 
+
+Here, we want to perform 4 tests, and we want the overall type I error of 0.05, we would perform each test with significance level 0.05/4
+
+So, instead of comparing our p-value with 0.05, we compare the p-value obtained from the above tests with 0.0125
+
+The p-value(0.9367) is greater than 0.0125,  so we would not reject the null hypothesis of equal means at the 0.0125 level of significance.
+
+The p-value(0.6216) is greater than 0.0125,  so we would not reject the null hypothesis of equal means at the 0.0125 level of significance.
+
+The p-value(0.1421) is greater than 0.0125,  so we would not reject the null hypothesis of equal means at the 0.0125 level of significance.
+
+The p-value(0.04371) is greater than 0.0125,  so we would not reject the null hypothesis of equal means at the 0.0125 level of significance.
+
+Overall, because the p-values of all test are greater than 0.0125, we would not reject the null hypothesis of equal means at 0.05 significance. 
+
+**2.4. It is is desired to compare mean weights of the 4 methods. This is to be done first by performing pairwise comparisons of mean weight for the different methods. What test should be used for these comparisons?**
+
+We try to do this by testing all the pairwise hypotheses,  $H_0:\mu_a=\mu_b$, $H_0:\mu_a=\mu_c$, $H_0:\mu_a=\mu_d$, $H_0:\mu_b=\mu_c$, $H_0:\mu_b=\mu_d$, and $H_0:\mu_c=\mu_d$, using the two-sample t-test (assuming equal variances)
+
+**2.5. Report the p-values from all pairwise comparisons. Include your R code for this question.**
+```{r}
+A.vs.B=t.test(defects$Weight[defects$Method=="A"],
+defects$Weight[defects$Method=="B"],var.equal=T)
+pAB = A.vs.B$p.value
+pAB
+```
+```{r}
+A.vs.C=t.test(defects$Weight[defects$Method=="A"],
+defects$Weight[defects$Method=="C"],var.equal=T)
+pAC = A.vs.C$p.value
+pAC
+```
+```{r}
+A.vs.D=t.test(defects$Weight[defects$Method=="A"],
+defects$Weight[defects$Method=="D"],var.equal=T)
+pAD = A.vs.D$p.value
+pAD
+```
+```{r}
+B.vs.C=t.test(defects$Weight[defects$Method=="B"],
+defects$Weight[defects$Method=="C"],var.equal=T)
+pBC= B.vs.C$p.value
+pBC
+```
+```{r}
+B.vs.D=t.test(defects$Weight[defects$Method=="B"],
+defects$Weight[defects$Method=="D"],var.equal=T)
+pBD = B.vs.D$p.value
+pBD
+```
+```{r}
+C.vs.D=t.test(defects$Weight[defects$Method=="C"],
+defects$Weight[defects$Method=="D"],var.equal=T)
+pCD = C.vs.D$p.value
+pCD
+```
+
+**2.6. Apply a Bonferroni correction to your results of the previous question to account for inflation of type I error rate due to multiple testing. What conclusion would you draw from these results? Would you reject the null hypothesis of no difference between any pair of means among the 4 methods, at significance level 0.05?**
+
+Let us first estimate the Type I Error probability using simulation
+```{r}
+set.seed(5)
+n=5
+m=10
+sigma=2
+reps=2000
+pvalues=data.frame(pAB=rep(NA, reps), pAC=rep(NA, reps), pAD=rep(NA, reps),pBC=rep(NA, reps),pBD=rep(NA, reps), pCD=rep(NA, reps))
+for(i in 1:reps){
+  x1 = rnorm(n,m,sigma)
+  x2 = rnorm(n,m,sigma)
+  x3 = rnorm(n,m,sigma)
+  x4 = rnorm(n,m,sigma)
+  x5 = rnorm(n,m,sigma)
+  x6 = rnorm(n,m,sigma)
+  pvalues$pAB[i]=t.test(x1,x2,var.equal = T)$p.value
+  pvalues$pAC[i]=t.test(x1,x3,var.equal = T)$p.value
+  pvalues$pAD[i]=t.test(x1,x4,var.equal = T)$p.value
+  pvalues$pBC[i]=t.test(x2,x3,var.equal = T)$p.value
+  pvalues$pBD[i]=t.test(x2,x4,var.equal = T)$p.value
+  pvalues$pCD[i]=t.test(x3,x4,var.equal = T)$p.value
+
+}
+reject = data.frame(pvalues<0.05, any.rejection=apply(pvalues<0.05, 1, any))
+apply(reject,2,mean)
+```
+Each of the six tests has an appropriate type I error probability of close to 0.05 but the overall type I error probability is greater than 0.22
+
+If we perform 6 tests, each of which has probability 0.05 of rejecting, then the probability of at least one of the tests rejecting cannot be greater than 0.3
+
+In our simulation of type I error, the probability of rejecting was 0.2160, less than 0.3
+
+The idea of the Bonferroni correction is to adjust the significance level of each test so that the overall probability of a type I error is controlled at the desired level.
+
+Applying Bonferroni correction to the previous simulation
+
+We perform 6 tests and we want an overall type I error of 0.05, we perform each test with significance level 0.05/6
+
+```{r}
+set.seed(5)
+n=5
+m=10
+sigma=2
+reps=2000
+pvalues=data.frame(pAB=rep(NA, reps), pAC=rep(NA, reps), pAD=rep(NA, reps),pBC=rep(NA, reps),pBD=rep(NA, reps), pCD=rep(NA, reps))
+for(i in 1:reps){
+  x1 = rnorm(n,m,sigma)
+  x2 = rnorm(n,m,sigma)
+  x3 = rnorm(n,m,sigma)
+  x4 = rnorm(n,m,sigma)
+  x5 = rnorm(n,m,sigma)
+  x6 = rnorm(n,m,sigma)
+  pvalues$pAB[i]=t.test(x1,x2,var.equal = T)$p.value
+  pvalues$pAC[i]=t.test(x1,x3,var.equal = T)$p.value
+  pvalues$pAD[i]=t.test(x1,x4,var.equal = T)$p.value
+  pvalues$pBC[i]=t.test(x2,x3,var.equal = T)$p.value
+  pvalues$pBD[i]=t.test(x2,x4,var.equal = T)$p.value
+  pvalues$pCD[i]=t.test(x3,x4,var.equal = T)$p.value
+
+}
+reject = data.frame(pvalues<0.05/6, any.rejection=apply(pvalues<0.05/6, 1, any))
+apply(reject,2,mean)
+```
+Since, all the p-values (0.6816055, 0.2081849, 0.0390036, 0.1191898, 0.02150551, 0.3784366) are greater than 0.0083, we would not reject the null hypothesis of  no difference between any pair of means among the 4 methods, at significance level 0.05
+
+The overall type I error probability after applying Bonferroni correction is 0.0425 (close to 0.05). 
+
+We can see the proof of the fact that the Bonferroni procedure is conservative, that is it leads to a test that will have strictly less than the desired type I error probability.
+
+Also, when we deal with large number of groups, the Bonferroni procedure becomes extremely conservative. The consequence is that the procedure will have very low power to detect differences when they exist. 
+
+**2.7. Compare the mean weights for the 4 methods using ANOVA. State the F-statistic and the p-value for the F-test. Include your R code for this question.**
+```{r}
+xA=defects$Weight[defects$Method=="A"]
+xB=defects$Weight[defects$Method=="B"]
+xC=defects$Weight[defects$Method=="C"]
+xD=defects$Weight[defects$Method=="D"]
+
+nA=length(xA)
+nB=length(xB)
+nC=length(xC)
+nD=length(xD)
+
+xbarA = mean(xA)
+xbarB = mean(xB)
+xbarC = mean(xC)
+xbarD = mean(xD)
+
+xbar = mean(c(xA, xB, xC, xD))
+ss.total = sum((xA-xbar)^2) + sum((xB-xbar)^2) + sum((xC-xbar)^2) +sum((xD-xbar)^2)
+ss.within = sum((xA-xbarA)^2) + sum((xB-xbarB)^2) + sum((xC-xbarC)^2) + sum((xD-xbarD)^2)
+ss.between = nA*(xbarA-xbar)^2+nB*(xbarB-xbar)^2+nC*(xbarC-xbar)^2 + nD*(xbarD-xbar)^2
+data.frame(ss.between,ss.within,ss.total)
+```
+The ANOVA F-statistic is based on the relative sizes of the between and within sums of squares. First the sums of squares are converted to "mean squares" as follows:
+$$
+\mbox{MS}_B=\frac{\mbox{SS}_B}{k-1}
+$$
+
+where $k$ is the number of groups, and
+$$
+\mbox{MS}_W=\frac{\mbox{SS}_W}{N-k}
+$$
+
+where $N=\sum_{i=1}^k n_i$ is the total sample size. Then the $F$ statistic is the ratio of the mean-squares:
+$$
+F=\frac{\mbox{MS}_B}{\mbox{MS}_W}
+$$
+A large value of $F$ provides evidence against the null hypothesis.
+
+```{r}
+summary(aov(defects$Weight~as.factor(Method), data=defects))
+```
+
+**2.8. What do you conclude from the ANOVA?**
+The p-value (0.0515) is (slightly) greater than 0.05, which indicates that there is not evidence against the null hypothesis of equal group means. So, we would not reject the null hypothesis of equal group means at 0.05 significance level.
+
+**2.9. How does your conclusion from ANOVA compare to the conclusion from the pairwise comparisons?**
+We arrive at the same conclusions on the null hypothesis by performing ANOVA and pairwise comparisons (with Bonferroni correction)
+However, we arrive at different conclusions on the null hypothesis by performing pairwise comparisons without Bonferroni correction.
+
